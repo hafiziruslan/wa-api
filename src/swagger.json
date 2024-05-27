@@ -6579,6 +6579,9 @@
     },
     "/api/{session}/all-contacts": {
       "get": {
+        "tags": [
+          "Contact"
+        ],
         "description": "",
         "parameters": [
           {

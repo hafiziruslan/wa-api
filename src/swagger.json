@@ -7966,7 +7966,9 @@
     },
     "/api/{session}/newsletter": {
       "post": {
-        "tags": [],
+        "tags": [
+          "Newsletter"
+        ],
         "description": "",
         "operationId": "createNewsletter",
         "parameters": [
@@ -7978,14 +7980,6 @@
               "type": "string",
               "example": "60123456789"
             }
-          },
-          {
-            "name": "id",
-            "schema": {
-              "type": "string",
-              "example": "<newsletter_id>"
-            },
-            "in": "query"
           }
         ],
         "responses": {
@@ -8008,22 +8002,12 @@
                   "name": {
                     "type": "string"
                   },
-                  "description": {
-                    "type": "string"
-                  },
-                  "picture": {
-                    "type": "string"
+                  "options": {
+                    "type": "object"
                   }
                 }
               },
               "examples": {
-                "Edit newsletter/channel": {
-                  "value": {
-                    "name": "New name of channel",
-                    "description": "New description of channel",
-                    "picture": "<new_base64_image> or send null"
-                  }
-                },
                 "Create newsletter/channel": {
                   "value": {
                     "name": "Name for your channel",
@@ -8041,7 +8025,9 @@
     },
     "/api/{session}/newsletter/{id}": {
       "put": {
-        "tags": [],
+        "tags": [
+          "Newsletter"
+        ],
         "description": "",
         "operationId": "editNewsletter",
         "parameters": [
@@ -8060,7 +8046,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "NEWSLETTER ID"
+              "example": "<newsletter_id>"
             }
           }
         ],
@@ -8115,7 +8101,9 @@
         }
       },
       "delete": {
-        "tags": [],
+        "tags": [
+          "Newsletter"
+        ],
         "description": "",
         "operationId": "destroyNewsletter",
         "parameters": [
@@ -8152,7 +8140,9 @@
     },
     "/api/{session}/mute-newsletter/{id}": {
       "post": {
-        "tags": [],
+        "tags": [
+          "Newsletter"
+        ],
         "description": "",
         "operationId": "muteNewsletter",
         "parameters": [
@@ -8176,8 +8166,8 @@
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "201": {
+            "description": "Created"
           }
         },
         "security": [

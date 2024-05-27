@@ -47,7 +47,7 @@
       "description": "Handles WhatsApp Channel operations such as creating, modifying, deleting channels."
     },
     {
-      "name": "Catalog & Business",
+      "name": "Catalog",
       "description": "Handles operations related to catalogs and business-related functionalities, such as managing product catalogs and business information."
     },
     {
@@ -5138,7 +5138,7 @@
     "/api/{session}/get-products": {
       "get": {
         "tags": [
-          "Catalog & Business"
+          "Catalog"
         ],
         "description": "",
         "parameters": [
@@ -5189,7 +5189,7 @@
     "/api/{session}/get-product-by-id": {
       "get": {
         "tags": [
-          "Catalog & Business"
+          "Catalog"
         ],
         "description": "",
         "parameters": [
@@ -5240,7 +5240,7 @@
     "/api/{session}/add-product": {
       "post": {
         "tags": [
-          "Catalog & Business"
+          "Catalog"
         ],
         "description": "",
         "parameters": [
@@ -5321,7 +5321,7 @@
     "/api/{session}/edit-product": {
       "post": {
         "tags": [
-          "Catalog & Business"
+          "Catalog"
         ],
         "description": "",
         "parameters": [
@@ -5384,7 +5384,7 @@
     "/api/{session}/del-products": {
       "post": {
         "tags": [
-          "Catalog & Business"
+          "Catalog"
         ],
         "description": "",
         "parameters": [
@@ -5441,7 +5441,7 @@
     "/api/{session}/change-product-image": {
       "post": {
         "tags": [
-          "Catalog & Business"
+          "Catalog"
         ],
         "description": "",
         "parameters": [
@@ -5502,7 +5502,7 @@
     "/api/{session}/add-product-image": {
       "post": {
         "tags": [
-          "Catalog & Business"
+          "Catalog"
         ],
         "description": "",
         "parameters": [
@@ -5563,7 +5563,7 @@
     "/api/{session}/remove-product-image": {
       "post": {
         "tags": [
-          "Catalog & Business"
+          "Catalog"
         ],
         "description": "",
         "parameters": [
@@ -5624,7 +5624,7 @@
     "/api/{session}/get-collections": {
       "get": {
         "tags": [
-          "Catalog & Business"
+          "Catalog"
         ],
         "description": "",
         "parameters": [
@@ -5683,7 +5683,7 @@
     "/api/{session}/create-collection": {
       "post": {
         "tags": [
-          "Catalog & Business"
+          "Catalog"
         ],
         "description": "",
         "parameters": [
@@ -5747,7 +5747,7 @@
     "/api/{session}/edit-collection": {
       "post": {
         "tags": [
-          "Catalog & Business"
+          "Catalog"
         ],
         "description": "",
         "parameters": [
@@ -5810,7 +5810,7 @@
     "/api/{session}/del-collection": {
       "post": {
         "tags": [
-          "Catalog & Business"
+          "Catalog"
         ],
         "description": "",
         "parameters": [
@@ -5930,7 +5930,7 @@
     "/api/{session}/set-product-visibility": {
       "post": {
         "tags": [
-          "Catalog & Business"
+          "Catalog"
         ],
         "description": "",
         "parameters": [
@@ -6012,7 +6012,7 @@
     "/api/{session}/set-cart-enabled": {
       "post": {
         "tags": [
-          "Catalog & Business"
+          "Catalog"
         ],
         "description": "",
         "parameters": [
@@ -7311,7 +7311,7 @@
     "/api/{session}/get-business-profiles-products": {
       "get": {
         "tags": [
-          "Catalog & Business"
+          "Catalog"
         ],
         "description": "",
         "parameters": [
@@ -7348,7 +7348,7 @@
     "/api/{session}/get-order-by-messageId/{messageId}": {
       "get": {
         "tags": [
-          "Catalog & Business"
+          "Catalog"
         ],
         "description": "",
         "parameters": [

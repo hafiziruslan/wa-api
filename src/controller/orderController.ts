@@ -51,7 +51,7 @@ function returnError(
 
 export async function getBusinessProfilesProducts(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Catalog & Business"]
+   * #swagger.tags = ["Catalog"]
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []
@@ -80,7 +80,7 @@ export async function getBusinessProfilesProducts(req: Request, res: Response) {
 }
 export async function getOrderbyMsg(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Catalog & Business"]
+   * #swagger.tags = ["Catalog"]
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []

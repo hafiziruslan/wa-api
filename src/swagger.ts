@@ -78,7 +78,7 @@ const doc = {
       description: 'Handles WhatsApp Channel operations such as creating, modifying, deleting channels.',
     },
     {
-      name: 'Catalog & Business',
+      name: 'Catalog',
       description: 'Handles operations related to catalogs and business-related functionalities, such as managing product catalogs and business information.',
     },
     {

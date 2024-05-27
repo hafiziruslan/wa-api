@@ -46,7 +46,7 @@ export default async function statusConnection(
             return res.status(400).json({
               response: null,
               status: 'Connected',
-              message: `O número ${num} não existe.`,
+              message: `The number ${num} does not exist.`,
             });
           } else {
             if ((numbers as any).indexOf(profile.id._serialized) < 0) {
@@ -62,7 +62,7 @@ export default async function statusConnection(
       return res.status(404).json({
         response: null,
         status: 'Disconnected',
-        message: 'A sessão do WhatsApp não está ativa.',
+        message: 'WhatsApp session is not active.',
       });
     }
     next();
@@ -71,7 +71,7 @@ export default async function statusConnection(
     return res.status(404).json({
       response: null,
       status: 'Disconnected',
-      message: 'A sessão do WhatsApp não está ativa.',
+      message: 'WhatsApp session is not active.',
     });
   }
 }

@@ -41,18 +41,16 @@ const doc = {
       description: 'Manage authentication operations',
     },
     {
-      name: 'Chat',
-      description: 'Manages chat-related operations.',
+      name: 'Profile',
+      description: 'Manages user profile-related operations, such as retrieving and updating profile information',
     },
     {
       name: 'Contact',
-      description:
-        'Handles operations related to contacts, such as managing contact lists, adding or removing contacts, and retrieving contact information.',
+      description: 'Handles operations related to contacts, such as managing contact lists, adding or removing contacts, and retrieving contact information.',
     },
     {
-      name: 'Catalog & Business',
-      description:
-        'Handles operations related to catalogs and business-related functionalities, such as managing product catalogs and business information.',
+      name: 'Chat',
+      description: 'Manages chat-related operations.',
     },
     {
       name: 'Community',
@@ -60,23 +58,15 @@ const doc = {
     },
     {
       name: 'Messages',
-      description:
-        'Handles message-related operations, including sending, receiving, and managing messages.',
-    },
-    {
-      name: 'Profile',
-      description:
-        'Manages user profile-related operations, such as retrieving and updating profile information',
+      description: 'Handles message-related operations, including sending, receiving, and managing messages.',
     },
     {
       name: 'Status Stories',
-      description:
-        'Handles operations related to status stories, such as viewing, updating, and managing status stories',
+      description: 'Handles operations related to status stories, such as viewing, updating, and managing status stories',
     },
     {
       name: 'Labels',
-      description:
-        'Manages labels or tags associated with chats or messages for organization and categorization purposes.',
+      description: 'Manages labels or tags associated with chats or messages for organization and categorization purposes.',
     },
     {
       name: 'Group',
@@ -84,9 +74,16 @@ const doc = {
         'Manages operations related to WhatsApp groups, such as creating, modifying, and managing group settings.',
     },
     {
+      name: 'Newsletter',
+      description: 'Handles WhatsApp Channel operations such as creating, modifying, deleting channels.',
+    },
+    {
+      name: 'Catalog & Business',
+      description: 'Handles operations related to catalogs and business-related functionalities, such as managing product catalogs and business information.',
+    },
+    {
       name: 'Misc',
-      description:
-        'Handles miscellaneous operations that do not fit into other specific categories.',
+      description: 'Handles miscellaneous operations that do not fit into other specific categories.',
     },
   ],
   definitions: {},

@@ -11,16 +11,16 @@
       "description": "Manage authentication operations"
     },
     {
-      "name": "Chat",
-      "description": "Manages chat-related operations."
+      "name": "Profile",
+      "description": "Manages user profile-related operations, such as retrieving and updating profile information"
     },
     {
       "name": "Contact",
       "description": "Handles operations related to contacts, such as managing contact lists, adding or removing contacts, and retrieving contact information."
     },
     {
-      "name": "Catalog & Business",
-      "description": "Handles operations related to catalogs and business-related functionalities, such as managing product catalogs and business information."
+      "name": "Chat",
+      "description": "Manages chat-related operations."
     },
     {
       "name": "Community",
@@ -29,10 +29,6 @@
     {
       "name": "Messages",
       "description": "Handles message-related operations, including sending, receiving, and managing messages."
-    },
-    {
-      "name": "Profile",
-      "description": "Manages user profile-related operations, such as retrieving and updating profile information"
     },
     {
       "name": "Status Stories",
@@ -45,6 +41,14 @@
     {
       "name": "Group",
       "description": "Manages operations related to WhatsApp groups, such as creating, modifying, and managing group settings."
+    },
+    {
+      "name": "Newsletter",
+      "description": "Handles WhatsApp Channel operations such as creating, modifying, deleting channels."
+    },
+    {
+      "name": "Catalog & Business",
+      "description": "Handles operations related to catalogs and business-related functionalities, such as managing product catalogs and business information."
     },
     {
       "name": "Misc",
@@ -527,7 +531,7 @@
                 }
               },
               "example": {
-                "phone": "5521999999999",
+                "phone": "601112345678",
                 "isGroup": false,
                 "all": false
               }
@@ -641,7 +645,7 @@
               "examples": {
                 "Send message to contact": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "isNewsletter": false,
                     "message": "Hi from WPPConnect"
@@ -708,7 +712,7 @@
               "examples": {
                 "Edit a message": {
                   "value": {
-                    "id": "true_5521999999999@c.us_3EB04FCAA1527EB6D9DEC8",
+                    "id": "true_601112345678@c.us_3EB04FCAA1527EB6D9DEC8",
                     "newText": "New text for message"
                   }
                 }
@@ -778,7 +782,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "isNewsletter": false,
                     "filename": "file name lol",
@@ -847,7 +851,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": true,
                     "path": "<path_file>"
                   }
@@ -913,7 +917,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": true,
                     "path": "<path_file>"
                   }
@@ -975,7 +979,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "message": "Reply to message",
                     "messageId": "<id_message>"
@@ -1047,7 +1051,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "isNewsletter": false,
                     "filename": "file name lol",
@@ -1121,7 +1125,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "isNewsletter": false,
                     "filename": "file name lol",
@@ -1186,7 +1190,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "path": "<path_file>",
                     "quotedMessageId": "message Id"
@@ -1246,7 +1250,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "base64Ptt": "<base64_string>"
                   }
@@ -1346,7 +1350,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "message": "Reply to message",
                     "messageId": "<id_message>"
@@ -1409,7 +1413,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "url": "http://www.link.com",
                     "caption": "Text for describe link"
@@ -1478,7 +1482,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "lat": "-89898322",
                     "lng": "-545454",
@@ -1554,7 +1558,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": true,
                     "message": "Your text message",
                     "mentioned": [
@@ -1652,7 +1656,7 @@
               "examples": {
                 "Send list message": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "description": "Desc for list",
                     "buttonText": "Select a option",
@@ -1732,7 +1736,7 @@
               "examples": {
                 "Send with custom items": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "items": [
                       {
@@ -1752,7 +1756,7 @@
                 },
                 "Send with product items": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "items": [
                       {
@@ -1766,7 +1770,7 @@
                 },
                 "Send with custom items and options": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "items": [
                       {
@@ -1843,7 +1847,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "name": "Poll name",
                     "choices": [
@@ -1923,7 +1927,7 @@
             "name": "wid",
             "schema": {
               "type": "string",
-              "example": "5521999999999@c.us"
+              "example": "601112345678@c.us"
             },
             "in": "query"
           }
@@ -2027,7 +2031,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "5521999999999@c.us"
+              "example": "601112345678@c.us"
             }
           }
         ],
@@ -2318,7 +2322,7 @@
                 "Default": {
                   "value": {
                     "participants": [
-                      "5521999999999"
+                      "601112345678"
                     ],
                     "name": "Group name"
                   }
@@ -2492,7 +2496,7 @@
                 "Default": {
                   "value": {
                     "groupId": "<groupId>",
-                    "phone": "5521999999999"
+                    "phone": "601112345678"
                   }
                 }
               }
@@ -2554,7 +2558,7 @@
                 "Default": {
                   "value": {
                     "groupId": "<groupId>",
-                    "phone": "5521999999999"
+                    "phone": "601112345678"
                   }
                 }
               }
@@ -2616,7 +2620,7 @@
                 "Default": {
                   "value": {
                     "groupId": "<groupId>",
-                    "phone": "5521999999999"
+                    "phone": "601112345678"
                   }
                 }
               }
@@ -2678,7 +2682,7 @@
                 "Default": {
                   "value": {
                     "groupId": "<groupId>",
-                    "phone": "5521999999999"
+                    "phone": "601112345678"
                   }
                 }
               }
@@ -3061,7 +3065,7 @@
             "name": "phone",
             "schema": {
               "type": "string",
-              "example": "5521999999999"
+              "example": "601112345678"
             },
             "in": "query"
           },
@@ -3404,7 +3408,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "5521999999999"
+              "example": "601112345678"
             }
           },
           {
@@ -3566,7 +3570,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "5521999999999"
+              "example": "601112345678"
             }
           },
           {
@@ -3653,7 +3657,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "5521999999999"
+              "example": "601112345678"
             }
           }
         ],
@@ -3694,7 +3698,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "5521999999999"
+              "example": "601112345678"
             }
           }
         ],
@@ -3776,7 +3780,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "5521999999999"
+              "example": "601112345678"
             }
           },
           {
@@ -3834,7 +3838,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "5521999999999@c.us"
+              "example": "601112345678@c.us"
             }
           },
           {
@@ -3928,7 +3932,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "value": true
                   }
@@ -4016,7 +4020,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false
                   }
                 }
@@ -4103,7 +4107,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false
                   }
                 }
@@ -4205,7 +4209,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "messageId": "<messageId>"
                   }
@@ -4325,7 +4329,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "messageId": "<messageId>"
                   }
@@ -4384,7 +4388,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false
                   }
                 }
@@ -4418,7 +4422,7 @@
               "properties": {
                 "phone": {
                   "type": "string",
-                  "example": "5521999999999"
+                  "example": "601112345678"
                 },
                 "isGroup": {
                   "type": "boolean",
@@ -4471,7 +4475,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "state": true
                   }
                 }
@@ -4535,11 +4539,11 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "name": "Name of contact",
                     "contactsId": [
-                      "5521999999999"
+                      "601112345678"
                     ]
                   }
                 }
@@ -4603,7 +4607,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "time": 1,
                     "type": "hours"
@@ -4660,7 +4664,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false
                   }
                 }
@@ -4721,7 +4725,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "chatstate": "1"
                   }
@@ -4784,7 +4788,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "value": true
                   }
@@ -4846,7 +4850,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "value": true
                   }
@@ -4911,7 +4915,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false,
                     "duration": 5,
                     "value": true
@@ -4971,7 +4975,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "messageId": "5521999999999",
+                    "messageId": "601112345678",
                     "star": true
                   }
                 }
@@ -5134,7 +5138,7 @@
     "/api/{session}/get-products": {
       "get": {
         "tags": [
-          "Catalog & Bussiness"
+          "Catalog & Business"
         ],
         "description": "",
         "parameters": [
@@ -5152,7 +5156,7 @@
             "in": "query",
             "schema": {
               "type": "string",
-              "example": "5521999999999"
+              "example": "601112345678"
             }
           },
           {
@@ -5185,7 +5189,7 @@
     "/api/{session}/get-product-by-id": {
       "get": {
         "tags": [
-          "Catalog & Bussiness"
+          "Catalog & Business"
         ],
         "description": "",
         "parameters": [
@@ -5203,7 +5207,7 @@
             "in": "query",
             "schema": {
               "type": "string",
-              "example": "5521999999999"
+              "example": "601112345678"
             }
           },
           {
@@ -5236,7 +5240,7 @@
     "/api/{session}/add-product": {
       "post": {
         "tags": [
-          "Catalog & Bussiness"
+          "Catalog & Business"
         ],
         "description": "",
         "parameters": [
@@ -5317,7 +5321,7 @@
     "/api/{session}/edit-product": {
       "post": {
         "tags": [
-          "Catalog & Bussiness"
+          "Catalog & Business"
         ],
         "description": "",
         "parameters": [
@@ -5380,7 +5384,7 @@
     "/api/{session}/del-products": {
       "post": {
         "tags": [
-          "Catalog & Bussiness"
+          "Catalog & Business"
         ],
         "description": "",
         "parameters": [
@@ -5437,7 +5441,7 @@
     "/api/{session}/change-product-image": {
       "post": {
         "tags": [
-          "Catalog & Bussiness"
+          "Catalog & Business"
         ],
         "description": "",
         "parameters": [
@@ -5498,7 +5502,7 @@
     "/api/{session}/add-product-image": {
       "post": {
         "tags": [
-          "Catalog & Bussiness"
+          "Catalog & Business"
         ],
         "description": "",
         "parameters": [
@@ -5559,7 +5563,7 @@
     "/api/{session}/remove-product-image": {
       "post": {
         "tags": [
-          "Catalog & Bussiness"
+          "Catalog & Business"
         ],
         "description": "",
         "parameters": [
@@ -5620,7 +5624,7 @@
     "/api/{session}/get-collections": {
       "get": {
         "tags": [
-          "Catalog & Bussiness"
+          "Catalog & Business"
         ],
         "description": "",
         "parameters": [
@@ -5637,7 +5641,7 @@
             "name": "phone",
             "schema": {
               "type": "string",
-              "example": "5521999999999"
+              "example": "601112345678"
             },
             "in": "query"
           },
@@ -5679,7 +5683,7 @@
     "/api/{session}/create-collection": {
       "post": {
         "tags": [
-          "Catalog & Bussiness"
+          "Catalog & Business"
         ],
         "description": "",
         "parameters": [
@@ -5743,7 +5747,7 @@
     "/api/{session}/edit-collection": {
       "post": {
         "tags": [
-          "Catalog & Bussiness"
+          "Catalog & Business"
         ],
         "description": "",
         "parameters": [
@@ -5806,7 +5810,7 @@
     "/api/{session}/del-collection": {
       "post": {
         "tags": [
-          "Catalog & Bussiness"
+          "Catalog & Business"
         ],
         "description": "",
         "parameters": [
@@ -5926,7 +5930,7 @@
     "/api/{session}/set-product-visibility": {
       "post": {
         "tags": [
-          "Catalog & Bussiness"
+          "Catalog & Business"
         ],
         "description": "",
         "parameters": [
@@ -6008,7 +6012,7 @@
     "/api/{session}/set-cart-enabled": {
       "post": {
         "tags": [
-          "Catalog & Bussiness"
+          "Catalog & Business"
         ],
         "description": "",
         "parameters": [
@@ -6407,7 +6411,7 @@
                 "Default": {
                   "value": {
                     "chatIds": [
-                      "5521999999999"
+                      "601112345678"
                     ],
                     "options": [
                       {
@@ -6554,7 +6558,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "5521999999999"
+              "example": "601112345678"
             }
           }
         ],
@@ -6615,7 +6619,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "5521999999999"
+              "example": "601112345678"
             }
           }
         ],
@@ -6656,7 +6660,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "5521999999999"
+              "example": "601112345678"
             }
           }
         ],
@@ -6698,7 +6702,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "5521999999999"
+              "example": "601112345678"
             }
           },
           {
@@ -6746,7 +6750,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "5521999999999"
+              "example": "601112345678"
             }
           }
         ],
@@ -6845,7 +6849,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false
                   }
                 }
@@ -6903,7 +6907,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "phone": "5521999999999",
+                    "phone": "601112345678",
                     "isGroup": false
                   }
                 }
@@ -7184,7 +7188,7 @@
         "tags": [
           "Profile"
         ],
-        "description": "Edit your bussiness profile",
+        "description": "Edit your Business profile",
         "operationId": "editBusinessProfile",
         "parameters": [
           {
@@ -7204,11 +7208,11 @@
               "properties": {
                 "adress": {
                   "type": "string",
-                  "example": "Av. Nossa Senhora de Copacabana, 315"
+                  "example": "PETRONAS Twin Towers, Kuala Lumpur City Centre, 50088 Kuala Lumpur, Malaysia"
                 },
                 "email": {
                   "type": "string",
-                  "example": "test@test.com.br"
+                  "example": "user@domain.tld"
                 },
                 "categories": {
                   "type": "object",
@@ -7219,7 +7223,7 @@
                     },
                     "localized_display_name": {
                       "type": "string",
-                      "example": "Artes e entretenimento"
+                      "example": "Arts and Entertainment"
                     },
                     "not_a_biz": {
                       "type": "boolean",
@@ -7236,7 +7240,7 @@
                   "type": "array",
                   "example": [
                     "https://www.wppconnect.io",
-                    "https://www.teste2.com.br"
+                    "https://www.teste2.my"
                   ],
                   "items": {
                     "type": "string"
@@ -7287,16 +7291,16 @@
                 }
               },
               "example": {
-                "adress": "Av. Nossa Senhora de Copacabana, 315",
-                "email": "test@test.com.br",
+                "adress": "PETRONAS Twin Towers, Kuala Lumpur City Centre, 50088 Kuala Lumpur, Malaysia",
+                "email": "user@domain.tld",
                 "categories": {
                   "$id": "133436743388217",
-                  "$localized_display_name": "Artes e entretenimento",
+                  "$localized_display_name": "Arts and Entertainment",
                   "$not_a_biz": false
                 },
                 "website": [
                   "https://www.wppconnect.io",
-                  "https://www.teste2.com.br"
+                  "https://www.teste2.my"
                 ]
               }
             }
@@ -7307,7 +7311,7 @@
     "/api/{session}/get-business-profiles-products": {
       "get": {
         "tags": [
-          "Catalog & Bussiness"
+          "Catalog & Business"
         ],
         "description": "",
         "parameters": [
@@ -7325,7 +7329,7 @@
             "in": "query",
             "schema": {
               "type": "string",
-              "example": "5521999999999@c.us"
+              "example": "601112345678@c.us"
             }
           }
         ],
@@ -7344,7 +7348,7 @@
     "/api/{session}/get-order-by-messageId/{messageId}": {
       "get": {
         "tags": [
-          "Catalog & Bussiness"
+          "Catalog & Business"
         ],
         "description": "",
         "parameters": [
@@ -7363,7 +7367,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "true_5521999999999@c.us_3EB0E69ACC5B396B21F2FE"
+              "example": "true_601112345678@c.us_3EB0E69ACC5B396B21F2FE"
             }
           }
         ],
@@ -7670,7 +7674,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "id": "<you_community_id@g.us>"
+                    "id": "<your_community_id@g.us>"
                   }
                 }
               }
@@ -7727,7 +7731,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "id": "<you_community_id@g.us>",
+                    "id": "<your_community_id@g.us>",
                     "groupsIds": [
                       "group1Id@g.us"
                     ]
@@ -7787,7 +7791,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "id": "<you_community_id@g.us>",
+                    "id": "<your_community_id@g.us>",
                     "groupsIds": [
                       "group1Id@g.us"
                     ]
@@ -7847,7 +7851,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "id": "<you_community_id@g.us>",
+                    "id": "<your_community_id@g.us>",
                     "participantsId": [
                       "group1Id@g.us"
                     ]
@@ -7907,7 +7911,7 @@
               "examples": {
                 "Default": {
                   "value": {
-                    "id": "<you_community_id@g.us>",
+                    "id": "<your_community_id@g.us>",
                     "participantsId": [
                       "group1Id@g.us"
                     ]

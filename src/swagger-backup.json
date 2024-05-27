@@ -10,7 +10,7 @@
       "url": "http://localhost:21465/api/{session}",
       "variables": {
         "session": {
-          "default": "NERDWHATS_AMERICA",
+          "default": "60123456789",
           "description": "(Required) nome da sessão"
         }
       }
@@ -1433,9 +1433,9 @@
     "/all-chats-with-messages": {
       "get": {
         "tags": ["Chat"],
-        "summary": "All Chats Whit Messages",
+        "summary": "All Chats with Messages",
         "description": "Retrieves all chats with messages",
-        "operationId": "AllChatsWhitMessages",
+        "operationId": "AllChatswithMessages",
         "parameters": [
           {
             "name": "Content-Type",
@@ -12076,7 +12076,7 @@
             "application/json": {
               "example": {
                 "name": "Cat",
-                "description": "white cat",
+                "description": "withe cat",
                 "image": "data:image/png;base64,..........",
                 "price": 19.9,
                 "url": "url my cat",
@@ -14452,8 +14452,8 @@
           "response": false
         }
       },
-      "AllChatsWhitMessages": {
-        "title": "AllChatsWhitMessages",
+      "AllChatswithMessages": {
+        "title": "AllChatswithMessages",
         "required": ["status", "response"],
         "type": "object",
         "properties": {

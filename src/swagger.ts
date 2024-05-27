@@ -38,7 +38,7 @@ const doc = {
   tags: [
     {
       name: 'Auth',
-      description: '',
+      description: 'Manage authentication operations',
     },
     {
       name: 'Chat',
@@ -50,7 +50,7 @@ const doc = {
         'Handles operations related to contacts, such as managing contact lists, adding or removing contacts, and retrieving contact information.',
     },
     {
-      name: 'Catalog & Bussiness',
+      name: 'Catalog & Business',
       description:
         'Handles operations related to catalogs and business-related functionalities, such as managing product catalogs and business information.',
     },
@@ -94,7 +94,7 @@ const doc = {
     '@schemas': {
       session: {
         type: 'string',
-        schema: 'NERDWHATS_AMERICA',
+        schema: '60123456789',
       },
     },
   },

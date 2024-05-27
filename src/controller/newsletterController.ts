@@ -34,7 +34,7 @@ function returnError(
 
 export async function createNewsletter(req: Request, res: Response) {
   /**
-     * #swagger.tags = ["Newsletter]
+     * #swagger.tags = ["Newsletter"]
         #swagger.operationId = 'createNewsletter'
        #swagger.autoBody=false
        #swagger.security = [{
@@ -81,7 +81,7 @@ export async function createNewsletter(req: Request, res: Response) {
 
 export async function editNewsletter(req: Request, res: Response) {
   /**
-       * #swagger.tags = ["Newsletter]
+       * #swagger.tags = ["Newsletter"]
          #swagger.operationId = 'editNewsletter'
          #swagger.autoBody=false
          #swagger.security = [{
@@ -146,7 +146,7 @@ export async function editNewsletter(req: Request, res: Response) {
 
 export async function destroyNewsletter(req: Request, res: Response) {
   /**
- * #swagger.tags = ["Newsletter]
+ * #swagger.tags = ["Newsletter"]
     #swagger.autoBody=false
     #swagger.operationId = 'destroyNewsletter'
     #swagger.security = [{
@@ -171,7 +171,7 @@ export async function destroyNewsletter(req: Request, res: Response) {
 
 export async function muteNewsletter(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Newsletter]
+   * #swagger.tags = ["Newsletter"]
      #swagger.operationId = 'muteNewsletter'
      #swagger.autoBody=false
      #swagger.security = [{

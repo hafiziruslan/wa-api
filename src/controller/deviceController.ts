@@ -96,7 +96,7 @@ export async function setProfileName(req: Request, res: Response) {
 
 export async function showAllContacts(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Contacts"]
+   * #swagger.tags = ["Contact"]
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []
@@ -1913,7 +1913,7 @@ export async function getAllContacts(req: Request, res: Response) {
     req.logger.error(error);
     return res.status(500).json({
       status: 'error',
-      message: 'Error on get all constacts',
+      message: 'Error on get all contacts',
       error: error,
     });
   }

@@ -513,7 +513,7 @@ export async function getPhoneNumber(req: Request, res: Response) {
 
 export async function getBlockList(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Misc"]
+   * #swagger.tags = ["Contact"]
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []
@@ -1070,7 +1070,7 @@ export async function markUnseenMessage(req: Request, res: Response) {
 
 export async function blockContact(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Misc"]
+     #swagger.tags = ["Contact"]
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []
@@ -1118,7 +1118,7 @@ export async function blockContact(req: Request, res: Response) {
 
 export async function unblockContact(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Misc"]
+     #swagger.tags = ["Contact"]
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []

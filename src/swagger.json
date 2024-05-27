@@ -1869,7 +1869,7 @@
     "/api/{session}/all-broadcast-list": {
       "get": {
         "tags": [
-          "Misc"
+          "Chat"
         ],
         "description": "",
         "parameters": [
@@ -6775,7 +6775,7 @@
     "/api/{session}/blocklist": {
       "get": {
         "tags": [
-          "Misc"
+          "Contact"
         ],
         "description": "",
         "parameters": [
@@ -6807,7 +6807,7 @@
     "/api/{session}/block-contact": {
       "post": {
         "tags": [
-          "Misc"
+          "Contact"
         ],
         "description": "",
         "parameters": [
@@ -6865,7 +6865,7 @@
     "/api/{session}/unblock-contact": {
       "post": {
         "tags": [
-          "Misc"
+          "Contact"
         ],
         "description": "",
         "parameters": [

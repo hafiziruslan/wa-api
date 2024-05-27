@@ -651,7 +651,7 @@ export async function revokeGroupInviteLink(req: Request, res: Response) {
 
 export async function getAllBroadcastList(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Misc"]
+     #swagger.tags = ["Chat"]
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []

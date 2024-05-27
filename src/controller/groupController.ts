@@ -31,7 +31,7 @@ export async function getAllGroups(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
    */
   try {
@@ -54,7 +54,7 @@ export async function joinGroupByCode(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -112,7 +112,7 @@ export async function createGroup(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -136,7 +136,7 @@ export async function createGroup(req: Request, res: Response) {
           examples: {
             "Default": {
               value: {
-                participants: ["5521999999999"],
+                participants: ["601112345678"],
                 name: "Group name"
               }
             }
@@ -187,7 +187,7 @@ export async function leaveGroup(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -213,13 +213,13 @@ export async function leaveGroup(req: Request, res: Response) {
 
     return res.status(200).json({
       status: 'success',
-      response: { messages: 'Você saiu do grupo com sucesso', group: groupId },
+      response: { messages: 'You left the group(s) successfully', group: groupId },
     });
   } catch (e) {
     req.logger.error(e);
     return res.status(500).json({
       status: 'error',
-      message: 'Erro ao sair do(s) grupo(s)',
+      message: 'Error when leaving the group(s)',
       error: e,
     });
   }
@@ -233,7 +233,7 @@ export async function getGroupMembers(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
    */
   const { groupId } = req.params;
@@ -262,7 +262,7 @@ export async function addParticipant(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -280,7 +280,7 @@ export async function addParticipant(req: Request, res: Response) {
             "Default": {
               value: {
                 groupId: "<groupId>",
-                phone: "5521999999999"
+                phone: "601112345678"
               }
             }
           }
@@ -326,7 +326,7 @@ export async function removeParticipant(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -344,7 +344,7 @@ export async function removeParticipant(req: Request, res: Response) {
             "Default": {
               value: {
                 "groupId": "<groupId>",
-                "phone": "5521999999999"
+                "phone": "601112345678"
               }
             }
           }
@@ -392,7 +392,7 @@ export async function promoteParticipant(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -410,7 +410,7 @@ export async function promoteParticipant(req: Request, res: Response) {
             "Default": {
               value: {
                 "groupId": "<groupId>",
-                "phone": "5521999999999"
+                "phone": "601112345678"
               }
             }
           }
@@ -453,7 +453,7 @@ export async function demoteParticipant(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -471,7 +471,7 @@ export async function demoteParticipant(req: Request, res: Response) {
             "Default": {
               value: {
                 "groupId": "<groupId>",
-                "phone": "5521999999999"
+                "phone": "601112345678"
               }
             }
           }
@@ -514,7 +514,7 @@ export async function getGroupAdmins(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -568,7 +568,7 @@ export async function getGroupInviteLink(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -610,7 +610,7 @@ export async function revokeGroupInviteLink(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -657,7 +657,7 @@ export async function getAllBroadcastList(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
    */
   try {
@@ -667,7 +667,7 @@ export async function getAllBroadcastList(req: Request, res: Response) {
     req.logger.error(e);
     return res.status(500).json({
       status: 'error',
-      message: 'Error on get all broad cast list',
+      message: 'Error on get all broadcast list',
       error: e,
     });
   }
@@ -681,7 +681,7 @@ export async function getGroupInfoFromInviteLink(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -719,7 +719,7 @@ export async function getGroupMembersIds(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.parameters["groupId"] = {
       schema: '<groupId>'
@@ -750,7 +750,7 @@ export async function setGroupDescription(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -795,7 +795,7 @@ export async function setGroupProperty(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -841,7 +841,7 @@ export async function setGroupSubject(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -886,7 +886,7 @@ export async function setMessagesAdminsOnly(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -931,7 +931,7 @@ export async function changePrivacyGroup(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -981,7 +981,7 @@ export async function setGroupProfilePic(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -1034,10 +1034,10 @@ export async function getCommonGroups(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.parameters["wid"] = {
-      schema: '5521999999999@c.us'
+      schema: '601112345678@c.us'
      }
    */
   const { wid } = req.params;

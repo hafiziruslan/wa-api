@@ -123,7 +123,7 @@ export async function closeAllSessions(req: Request) {
       }
       delete clientsArray[session];
     } catch (error) {
-      logger.error('Not was possible stop session: ' + session);
+      logger.error('Stop session not possible: ' + session);
     }
   });
 }

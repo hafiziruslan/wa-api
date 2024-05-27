@@ -51,17 +51,17 @@ function returnError(
 
 export async function getBusinessProfilesProducts(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Catalog & Bussiness"]
+   * #swagger.tags = ["Catalog & Business"]
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.parameters["phone"] = {
       in: 'query',
-      schema: '5521999999999@c.us',
+      schema: '601112345678@c.us',
      }
    */
   const session = req.session;
@@ -80,16 +80,16 @@ export async function getBusinessProfilesProducts(req: Request, res: Response) {
 }
 export async function getOrderbyMsg(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Catalog & Bussiness"]
+   * #swagger.tags = ["Catalog & Business"]
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.parameters["messageId"] = {
-      schema: 'true_5521999999999@c.us_3EB0E69ACC5B396B21F2FE'
+      schema: 'true_601112345678@c.us_3EB0E69ACC5B396B21F2FE'
      }
    */
   const session = req.session;

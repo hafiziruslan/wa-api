@@ -28,7 +28,7 @@ export async function encryptSession(
        schema: 'THISISMYSECURETOKEN',
      }
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.autoHeaders = false
    */

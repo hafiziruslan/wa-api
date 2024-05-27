@@ -249,7 +249,7 @@ export async function startHelper(client: any, req: any) {
 }
 
 async function sendUnread(client: any, req: any) {
-  req.logger.info(`${client.session} : Inicio enviar mensagens não lidas`);
+  req.logger.info(`${client.session} : Start Send Unread Messages`);
 
   try {
     const chats = await client.getAllChatsWithMessages(true);
@@ -261,7 +261,7 @@ async function sendUnread(client: any, req: any) {
         }
     }
 
-    req.logger.info(`${client.session} : Fim enviar mensagens não lidas`);
+    req.logger.info(`${client.session} : End Send Unread Messages`);
   } catch (ex) {
     req.logger.error(ex);
   }
@@ -272,7 +272,7 @@ async function archive(client: any, req: any) {
     return new Promise((resolve) => setTimeout(resolve, time * 10));
   }
 
-  req.logger.info(`${client.session} : Inicio arquivando chats`);
+  req.logger.info(`${client.session} : Start archiving chats`);
 
   try {
     let chats = await client.getAllChats();
@@ -294,7 +294,7 @@ async function archive(client: any, req: any) {
         }
       }
     }
-    req.logger.info(`${client.session} : Fim arquivando chats`);
+    req.logger.info(`${client.session} : End archiving chats`);
   } catch (ex) {
     req.logger.error(ex);
   }

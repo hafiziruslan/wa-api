@@ -118,7 +118,7 @@ export async function takeScreenshot(req: Request, res: Response) {
           "bearerAuth": []
     }]
     #swagger.parameters["session"] = {
-    schema: 'NERDWHATS_AMERICA'
+    schema: '60123456789'
     }
   */
 
@@ -143,7 +143,7 @@ export async function clearSessionData(req: Request, res: Response) {
     schema: 'THISISMYSECURETOKEN'
     }
     #swagger.parameters["session"] = {
-    schema: 'NERDWHATS_AMERICA'
+    schema: '60123456789'
     }
   */
 
@@ -190,7 +190,7 @@ export async function setLimit(req: Request, res: Response) {
           "bearerAuth": []
     }]
     #swagger.parameters["session"] = {
-    schema: 'NERDWHATS_AMERICA'
+    schema: '60123456789'
     }
      #swagger.requestBody = {
       required: true,

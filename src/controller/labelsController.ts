@@ -24,7 +24,7 @@ export async function addNewLabel(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -67,7 +67,7 @@ export async function addNewLabel(req: Request, res: Response) {
   } catch (error) {
     res.status(500).json({
       status: 'Error',
-      message: 'Erro ao adicionar etiqueta.',
+      message: 'Error adding label.',
       error: error,
     });
   }
@@ -81,7 +81,7 @@ export async function addOrRemoveLabels(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -112,7 +112,7 @@ export async function addOrRemoveLabels(req: Request, res: Response) {
           examples: {
             "Default": {
               value: {
-                chatIds: ["5521999999999"],
+                chatIds: ["601112345678"],
                 options: [
                   { labelId: "76", type: "add" },
                   { labelId: "75", type: "remove" }
@@ -136,7 +136,7 @@ export async function addOrRemoveLabels(req: Request, res: Response) {
   } catch (error) {
     res.status(500).json({
       status: 'Error',
-      message: 'Erro ao adicionar/deletar etiqueta.',
+      message: 'Error when adding/deleting label.',
       error: error,
     });
   }
@@ -150,7 +150,7 @@ export async function getAllLabels(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
    */
   try {
@@ -159,7 +159,7 @@ export async function getAllLabels(req: Request, res: Response) {
   } catch (error) {
     res.status(500).json({
       status: 'Error',
-      message: 'Erro ao buscar etiquetas.',
+      message: 'Error when seeking labels.',
       error: error,
     });
   }
@@ -173,7 +173,7 @@ export async function deleteAllLabels(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
    */
   try {
@@ -182,7 +182,7 @@ export async function deleteAllLabels(req: Request, res: Response) {
   } catch (error) {
     res.status(500).json({
       status: 'Error',
-      message: 'Erro ao deletar todas as etiquetas.',
+      message: 'Error when deleting all labels.',
       error: error,
     });
   }
@@ -196,7 +196,7 @@ export async function deleteLabel(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.parameters["id"] = {
       schema: '<labelId>'
@@ -209,7 +209,7 @@ export async function deleteLabel(req: Request, res: Response) {
   } catch (error) {
     res.status(500).json({
       status: 'Error',
-      message: 'Erro ao deletar etiqueta.',
+      message: 'Error when deleting label.',
       error: error,
     });
   }

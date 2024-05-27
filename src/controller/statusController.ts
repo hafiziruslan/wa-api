@@ -6,7 +6,7 @@ function returnError(req: Request, res: Response, error: any) {
   req.logger.error(error);
   res
     .status(500)
-    .json({ status: 'Error', message: 'Erro ao enviar status.', error: error });
+    .json({ status: 'Error', message: 'Error by sending status.', error: error });
 }
 
 async function returnSucess(res: Response, data: any) {
@@ -21,7 +21,7 @@ export async function sendTextStorie(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.parameters["obj"] = {
       in: 'body',
@@ -81,7 +81,7 @@ export async function sendImageStorie(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -134,7 +134,7 @@ export async function sendVideoStorie(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -173,7 +173,7 @@ export async function sendVideoStorie(req: Request, res: Response) {
     results.push(await req.client.sendVideoStatus(pathFile));
 
     if (results.length === 0)
-      return res.status(400).json('Error sending message');
+      return res.status(400).json('Error sending video of stories');
     if (req.file) await unlinkAsync(pathFile);
     returnSucess(res, results);
   } catch (error) {

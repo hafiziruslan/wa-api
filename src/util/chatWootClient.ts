@@ -18,7 +18,6 @@ import { default as FormData } from 'form-data';
 import mime from 'mime-types';
 
 import bufferutils from './bufferutils';
-// import bufferUtils from './bufferutils';
 import { eventEmitter } from './sessionUtil';
 
 export default class chatWootClient {
@@ -38,7 +37,7 @@ export default class chatWootClient {
       : `WPPConnect`;
     this.mobile_number = this.config.mobile_number
       ? this.config.mobile_number
-      : '5511999999999';
+      : '60112345678';
     this.sender = {
       pushname: this.mobile_name,
       id: this.mobile_number,
@@ -53,7 +52,7 @@ export default class chatWootClient {
       },
     });
 
-    //assina o evento do qrcode
+    //sign the qrcode event
     eventEmitter.on(`qrcode-${session}`, (qrCode, urlCode, client) => {
       setTimeout(async () => {
         if (config?.chatwoot?.sendQrCode !== false) {
@@ -63,14 +62,14 @@ export default class chatWootClient {
             type: 'image',
             timestamp: 'qrcode',
             mimetype: 'image/png',
-            caption: 'leia o qrCode',
+            caption: 'Read the QRCODE',
             qrCode: qrCode.replace('data:image/png;base64,', ''),
           });
         }
       }, 1000);
     });
 
-    //assiona o evento do status
+    //acting the status event
     eventEmitter.on(`status-${session}`, (client, status) => {
       if (config?.chatwoot?.sendStatus !== false) {
         this.sendMessage(client, {

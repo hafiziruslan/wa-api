@@ -59,7 +59,7 @@ async function downloadFileFunction(
   } catch (e) {
     logger.error(e);
     logger.warn(
-      'Erro ao descriptografar a midia, tentando fazer o download direto...'
+      'Error when decrypting the media, trying to download direct...'
     );
     try {
       const buffer = await client.downloadMedia(message);
@@ -84,7 +84,7 @@ async function downloadFileFunction(
       }
     } catch (e) {
       logger.error(e);
-      logger.warn('Não foi possível baixar a mídia...');
+      logger.warn('It was not possible to download the media.');
     }
   }
 }
@@ -107,7 +107,7 @@ export async function startAllSessions(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.parameters["secretkey"] = {
       schema: 'THISISMYSECURECODE'
@@ -193,7 +193,7 @@ export async function startSession(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -230,7 +230,7 @@ export async function closeSession(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
    */
   const session = req.session;
@@ -271,7 +271,7 @@ export async function logOutSession(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
    */
   try {
@@ -330,7 +330,7 @@ export async function checkConnectionSession(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
    */
   try {
@@ -351,7 +351,7 @@ export async function downloadMediaByMessage(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -418,7 +418,7 @@ export async function getMediaByMessage(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.parameters["session"] = {
       schema: 'messageId'
@@ -467,7 +467,7 @@ export async function getSessionState(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
    */
   try {
@@ -506,7 +506,7 @@ export async function getQrCode(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
    */
   try {
@@ -554,7 +554,7 @@ export async function killServiceWorker(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
    */
   try {
@@ -581,7 +581,7 @@ export async function restartService(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
    */
   try {
@@ -606,7 +606,7 @@ export async function subscribePresence(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
       required: true,
@@ -621,7 +621,7 @@ export async function subscribePresence(req: Request, res: Response) {
             }
           },
           example: {
-            phone: '5521999999999',
+            phone: '601112345678',
             isGroup: false,
             all: false,
           }
@@ -664,31 +664,31 @@ export async function editBusinessProfile(req: Request, res: Response) {
   /**
    * #swagger.tags = ["Profile"]
      #swagger.operationId = 'editBusinessProfile'
-   * #swagger.description = 'Edit your bussiness profile'
+   * #swagger.description = 'Edit your Business profile'
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.parameters["obj"] = {
       in: 'body',
       schema: {
-        $adress: 'Av. Nossa Senhora de Copacabana, 315',
-        $email: 'test@test.com.br',
+        $adress: 'PETRONAS Twin Towers, Kuala Lumpur City Centre, 50088 Kuala Lumpur, Malaysia',
+        $email: 'user@domain.tld',
         $categories: {
           $id: "133436743388217",
-          $localized_display_name: "Artes e entretenimento",
+          $localized_display_name: "Arts and Entertainment",
           $not_a_biz: false,
         },
         $website: [
           "https://www.wppconnect.io",
-          "https://www.teste2.com.br",
+          "https://www.teste2.my",
         ],
       }
      }
-     
+
      #swagger.requestBody = {
       required: true,
       "@content": {
@@ -703,16 +703,16 @@ export async function editBusinessProfile(req: Request, res: Response) {
             }
           },
           example: {
-            adress: 'Av. Nossa Senhora de Copacabana, 315',
-            email: 'test@test.com.br',
+            adress: 'PETRONAS Twin Towers, Kuala Lumpur City Centre, 50088 Kuala Lumpur, Malaysia',
+            email: 'user@domain.tld',
             categories: {
               $id: "133436743388217",
-              $localized_display_name: "Artes e entretenimento",
+              $localized_display_name: "Arts and Entertainment",
               $not_a_biz: false,
             },
             website: [
               "https://www.wppconnect.io",
-              "https://www.teste2.com.br",
+              "https://www.teste2.my",
             ],
           }
         }

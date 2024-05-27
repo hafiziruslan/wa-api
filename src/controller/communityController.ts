@@ -24,7 +24,7 @@ export async function createCommunity(req: Request, res: Response) {
               "bearerAuth": []
        }]
        #swagger.parameters["session"] = {
-        schema: 'NERDWHATS_AMERICA'
+        schema: '60123456789'
        }
       #swagger.requestBody = {
         required: true,
@@ -79,7 +79,7 @@ export async function deactivateCommunity(req: Request, res: Response) {
                 "bearerAuth": []
          }]
          #swagger.parameters["session"] = {
-          schema: 'NERDWHATS_AMERICA'
+          schema: '60123456789'
          }
         #swagger.requestBody = {
           required: true,
@@ -94,7 +94,7 @@ export async function deactivateCommunity(req: Request, res: Response) {
               examples: {
                 "Default": {
                   value: {
-                    id: "<you_community_id@g.us>",
+                    id: "<your_community_id@g.us>",
                   }
                 },
               }
@@ -126,7 +126,7 @@ export async function addSubgroupsCommunity(req: Request, res: Response) {
             "bearerAuth": []
     }]
     #swagger.parameters["session"] = {
-    schema: 'NERDWHATS_AMERICA'
+    schema: '60123456789'
     }
     #swagger.requestBody = {
         required: true,
@@ -142,7 +142,7 @@ export async function addSubgroupsCommunity(req: Request, res: Response) {
                 examples: {
                     "Default": {
                         value: {
-                            id: "<you_community_id@g.us>",
+                            id: "<your_community_id@g.us>",
                             groupsIds: ["group1Id@g.us"]
                         }
                     },
@@ -175,7 +175,7 @@ export async function removeSubgroupsCommunity(req: Request, res: Response) {
             "bearerAuth": []
     }]
     #swagger.parameters["session"] = {
-    schema: 'NERDWHATS_AMERICA'
+    schema: '60123456789'
     }
     #swagger.requestBody = {
         required: true,
@@ -191,7 +191,7 @@ export async function removeSubgroupsCommunity(req: Request, res: Response) {
                 examples: {
                     "Default": {
                         value: {
-                            id: "<you_community_id@g.us>",
+                            id: "<your_community_id@g.us>",
                             groupsIds: ["group1Id@g.us"]
                         }
                     },
@@ -224,7 +224,7 @@ export async function demoteCommunityParticipant(req: Request, res: Response) {
             "bearerAuth": []
     }]
     #swagger.parameters["session"] = {
-    schema: 'NERDWHATS_AMERICA'
+    schema: '60123456789'
     }
     #swagger.requestBody = {
         required: true,
@@ -240,7 +240,7 @@ export async function demoteCommunityParticipant(req: Request, res: Response) {
                 examples: {
                     "Default": {
                         value: {
-                            id: "<you_community_id@g.us>",
+                            id: "<your_community_id@g.us>",
                             participantsId: ["group1Id@g.us"]
                         }
                     },
@@ -276,7 +276,7 @@ export async function promoteCommunityParticipant(req: Request, res: Response) {
             "bearerAuth": []
     }]
     #swagger.parameters["session"] = {
-    schema: 'NERDWHATS_AMERICA'
+    schema: '60123456789'
     }
     #swagger.requestBody = {
         required: true,
@@ -292,7 +292,7 @@ export async function promoteCommunityParticipant(req: Request, res: Response) {
                 examples: {
                     "Default": {
                         value: {
-                            id: "<you_community_id@g.us>",
+                            id: "<your_community_id@g.us>",
                             participantsId: ["group1Id@g.us"]
                         }
                     },
@@ -328,7 +328,7 @@ export async function getCommunityParticipants(req: Request, res: Response) {
             "bearerAuth": []
     }]
     #swagger.parameters["session"] = {
-        schema: 'NERDWHATS_AMERICA'
+        schema: '60123456789'
     }
     #swagger.parameters["id"] = {
         schema: 'communityId@g.us'

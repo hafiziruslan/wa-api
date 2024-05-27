@@ -41,7 +41,7 @@ export async function createNewsletter(req: Request, res: Response) {
               "bearerAuth": []
        }]
        #swagger.parameters["session"] = {
-        schema: 'NERDWHATS_AMERICA'
+        schema: '60123456789'
        }
        #swagger.requestBody = {
         required: true,
@@ -56,7 +56,7 @@ export async function createNewsletter(req: Request, res: Response) {
                 },
                 examples: {
                     "Create newsletter/channel": {
-                        value: { 
+                        value: {
                             name: 'Name for your channel',
                             options: {
                                 description: 'Description of channel',
@@ -88,7 +88,7 @@ export async function editNewsletter(req: Request, res: Response) {
                 "bearerAuth": []
          }]
          #swagger.parameters["session"] = {
-          schema: 'NERDWHATS_AMERICA'
+          schema: '60123456789'
          }
          #swagger.parameters["id"] = {
           schema: '<newsletter_id>'
@@ -107,14 +107,14 @@ export async function editNewsletter(req: Request, res: Response) {
             },
             examples: {
               "Edit newsletter/channel": {
-                value: { 
+                value: {
                     name: 'New name of channel',
                     description: 'New description of channel',
                     picture: '<new_base64_image> or send null',
                 }
               },
                 "Create newsletter/channel": {
-                    value: { 
+                    value: {
                         name: 'Name for your channel',
                         options: {
                             description: 'Description of channel',
@@ -153,7 +153,7 @@ export async function destroyNewsletter(req: Request, res: Response) {
             "bearerAuth": []
     }]
     #swagger.parameters["session"] = {
-        schema: 'NERDWHATS_AMERICA'
+        schema: '60123456789'
     }
     #swagger.parameters["id"] = {
         schema: 'NEWSLETTER ID'
@@ -178,7 +178,7 @@ export async function muteNewsletter(req: Request, res: Response) {
               "bearerAuth": []
       }]
       #swagger.parameters["session"] = {
-          schema: 'NERDWHATS_AMERICA'
+          schema: '60123456789'
       }
       #swagger.parameters["id"] = {
           schema: 'NEWSLETTER ID'

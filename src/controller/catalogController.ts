@@ -19,17 +19,17 @@ import { createCatalogLink } from '../util/functions';
 
 export async function getProducts(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Catalog & Bussiness"]
+   * #swagger.tags = ["Catalog & Business"]
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.parameters["phone"] = {
       in: 'query',
-      schema: '5521999999999',
+      schema: '601112345678',
      }
      #swagger.parameters["qnt"] = {
       in: 'query',
@@ -60,17 +60,17 @@ export async function getProducts(req: Request, res: Response) {
 
 export async function getProductById(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Catalog & Bussiness"]
+   * #swagger.tags = ["Catalog & Business"]
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.parameters["phone"] = {
       in: 'query',
-      schema: '5521999999999',
+      schema: '601112345678',
      }
      #swagger.parameters["id"] = {
       in: 'query',
@@ -97,13 +97,13 @@ export async function getProductById(req: Request, res: Response) {
 }
 export async function editProduct(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Catalog & Bussiness"]
+   * #swagger.tags = ["Catalog & Business"]
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
     #swagger.requestBody = {
         required: true,
@@ -150,13 +150,13 @@ export async function editProduct(req: Request, res: Response) {
 
 export async function delProducts(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Catalog & Bussiness"]
+   * #swagger.tags = ["Catalog & Business"]
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
         required: true,
@@ -199,15 +199,15 @@ export async function delProducts(req: Request, res: Response) {
 
 export async function changeProductImage(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Catalog & Bussiness"]
+   * #swagger.tags = ["Catalog & Business"]
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
-     
+
      #swagger.requestBody = {
         required: true,
         "@content": {
@@ -251,13 +251,13 @@ export async function changeProductImage(req: Request, res: Response) {
 
 export async function addProduct(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Catalog & Bussiness"]
+   * #swagger.tags = ["Catalog & Business"]
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
         required: true,
@@ -330,13 +330,13 @@ export async function addProduct(req: Request, res: Response) {
 
 export async function addProductImage(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Catalog & Bussiness"]
+   * #swagger.tags = ["Catalog & Business"]
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
         required: true,
@@ -381,13 +381,13 @@ export async function addProductImage(req: Request, res: Response) {
 
 export async function removeProductImage(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Catalog & Bussiness"]
+   * #swagger.tags = ["Catalog & Business"]
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
         required: true,
@@ -432,16 +432,16 @@ export async function removeProductImage(req: Request, res: Response) {
 
 export async function getCollections(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Catalog & Bussiness"]
+   * #swagger.tags = ["Catalog & Business"]
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.parameters["phone"] = {
-      schema: '5521999999999'
+      schema: '601112345678'
      }
      #swagger.parameters["qnt"] = {
       schema: '10'
@@ -474,13 +474,13 @@ export async function getCollections(req: Request, res: Response) {
 
 export async function createCollection(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Catalog & Bussiness"]
+   * #swagger.tags = ["Catalog & Business"]
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
         required: true,
@@ -525,13 +525,13 @@ export async function createCollection(req: Request, res: Response) {
 
 export async function editCollection(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Catalog & Bussiness"]
+   * #swagger.tags = ["Catalog & Business"]
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
         required: true,
@@ -578,13 +578,13 @@ export async function editCollection(req: Request, res: Response) {
 
 export async function deleteCollection(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Catalog & Bussiness"]
+   * #swagger.tags = ["Catalog & Business"]
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.requestBody = {
         required: true,
@@ -627,13 +627,13 @@ export async function deleteCollection(req: Request, res: Response) {
 
 export async function setProductVisibility(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Catalog & Bussiness"]
+   * #swagger.tags = ["Catalog & Business"]
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
      #swagger.parameters["obj"] = {
       in: 'body',
@@ -685,13 +685,13 @@ export async function setProductVisibility(req: Request, res: Response) {
 
 export async function updateCartEnabled(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Catalog & Bussiness"]
+   * #swagger.tags = ["Catalog & Business"]
      #swagger.autoBody=false
      #swagger.security = [{
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
       #swagger.requestBody = {
         required: true,
@@ -740,7 +740,7 @@ export async function sendLinkCatalog(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["session"] = {
-      schema: 'NERDWHATS_AMERICA'
+      schema: '60123456789'
      }
       #swagger.requestBody = {
         required: true,
@@ -783,7 +783,7 @@ export async function sendLinkCatalog(req: Request, res: Response) {
           buttons: [
             {
               url: catalogLink,
-              text: 'Abrir catálogo',
+              text: 'Open catalog',
             },
           ],
         }

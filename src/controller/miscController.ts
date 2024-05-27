@@ -24,7 +24,7 @@ import { clientsArray } from '../util/sessionUtil';
 
 export async function backupAllSessions(req: Request, res: Response) {
   /**
-     * #swagger.tags = ["Misc"]
+     * #swagger.tags = ["Auth"]
      * #swagger.description = 'Please, open the router in your browser, in swagger this not run'
      * #swagger.produces = ['application/octet-stream']
      * #swagger.consumes = ['application/octet-stream']
@@ -65,7 +65,7 @@ export async function backupAllSessions(req: Request, res: Response) {
 
 export async function restoreAllSessions(req: Request, res: Response) {
   /**
-   #swagger.tags = ["Misc"]
+   #swagger.tags = ["Auth"]
    #swagger.autoBody=false
     #swagger.parameters["secretkey"] = {
     required: true,
@@ -136,7 +136,7 @@ export async function takeScreenshot(req: Request, res: Response) {
 
 export async function clearSessionData(req: Request, res: Response) {
   /**
-   #swagger.tags = ["Misc"]
+   #swagger.tags = ["Auth"]
    #swagger.autoBody=false
     #swagger.parameters["secretkey"] = {
     required: true,

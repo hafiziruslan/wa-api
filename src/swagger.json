@@ -412,7 +412,7 @@
     "/api/{session}/{secretkey}/clear-session-data": {
       "post": {
         "tags": [
-          "Misc"
+          "Auth"
         ],
         "description": "",
         "parameters": [
@@ -7389,7 +7389,7 @@
     "/api/{secretkey}/backup-sessions": {
       "get": {
         "tags": [
-          "Misc"
+          "Auth"
         ],
         "description": "Please, open the router in your browser, in swagger this not run",
         "produces": [
@@ -7427,7 +7427,7 @@
     "/api/{secretkey}/restore-sessions": {
       "post": {
         "tags": [
-          "Misc"
+          "Auth"
         ],
         "description": "",
         "parameters": [

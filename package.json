@@ -1,7 +1,7 @@
 {
   "name": "@wppconnect/server",
   "version": "2.4.4",
-  "description": "Projeto feito para autenticar a automomacao do WhatsappWeb com multi-clientes de forma dinamica. Backend feito em Nodejs(express, socketio), FrontEnd (ReactJS)",
+  "description": "Project designed to dynamically authenticate WhatsApp Web automation with multi-clients. Backend made in Nodejs (express, socketio), FrontEnd (ReactJS)",
   "main": "dist/index.js",
   "author": "kingaspx",
   "license": "Apache-2.0",

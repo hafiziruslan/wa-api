@@ -3,7 +3,7 @@ import { ServerOptions } from './types/ServerOptions';
 export default {
   secretKey: 'THISISMYSECURETOKEN',
   host: 'http://localhost',
-  port: '21465',
+  port: 21465,
   deviceName: 'WppConnect',
   poweredBy: 'WPPConnect-Server',
   startAllSession: true,
@@ -12,18 +12,19 @@ export default {
   customUserDataDir: './userDataDir/',
   webhook: {
     url: null,
-    autoDownload: true,
+    autoDownload: false,
     uploadS3: false,
-    readMessage: true,
     allUnreadOnStart: false,
-    listenAcks: true,
-    onPresenceChanged: true,
+    listenAcks: false,
+    onIncomingCall: true,
+    onLabelUpdated: false,
     onParticipantsChanged: true,
-    onReactionMessage: true,
     onPollResponse: true,
+    onPresenceChanged: false,
+    onReactionMessage: true,
     onRevokedMessage: true,
-    onLabelUpdated: true,
-    onSelfMessage: false,
+    onSelfMessage: true,
+    readMessage: false,
     ignore: ['status@broadcast'],
   },
   websocket: {
@@ -37,13 +38,14 @@ export default {
   archive: {
     enable: false,
     waitTime: 10,
-    daysToArchive: 45,
+    daysToArchive: 14,
   },
   log: {
     level: 'silly', // Before open a issue, change level to silly and retry a action
     logger: ['console', 'file'],
   },
   createOptions: {
+    // whatsappVersion: '2.2413.51',
     browserArgs: [
       '--disable-web-security',
       '--no-sandbox',
@@ -66,11 +68,12 @@ export default {
       '--ignore-certificate-errors',
       '--ignore-ssl-errors',
       '--ignore-certificate-errors-spki-list',
+      //'--disable-features=LeakyPeeker'
     ],
     /**
      * Example of configuring the linkPreview generator
      * If you set this to 'null', it will use global servers; however, you have the option to define your own server
-     * Clone the repository https://github.com/wppconnect-team/wa-js-api-server and host it on your server with ssl
+     * Clone the repository https://github.com/wppconnect-team/wa-js-api-server and host it on your server with SSL
      *
      * Configure the attribute as follows:
      * linkPreviewApiServers: [ 'https://www.yourserver.com/wa-js-api-server' ]
@@ -83,7 +86,7 @@ export default {
   },
   db: {
     mongodbDatabase: 'tokens',
-    mongodbCollection: '',
+    mongodbCollection: 'wappconnect',
     mongodbUser: '',
     mongodbPassword: '',
     mongodbHost: '',
@@ -94,10 +97,10 @@ export default {
     redisPort: 6379,
     redisPassword: '',
     redisDb: 0,
-    redisPrefix: 'docker',
+    redisPrefix: 'wappconnect-tokens',
   },
   aws_s3: {
-    region: 'sa-east-1' as any,
+    region: 'ap-southeast-1' as any,
     access_key_id: null,
     secret_key: null,
     defaultBucketName: null,

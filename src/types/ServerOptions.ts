@@ -14,15 +14,17 @@ export interface ServerOptions {
     url: string;
     autoDownload: boolean;
     uploadS3: boolean;
-    readMessage: boolean;
     allUnreadOnStart: boolean;
     listenAcks: boolean;
-    onPresenceChanged: boolean;
+    onIncomingCall: boolean,
+    onLabelUpdated: boolean,
     onParticipantsChanged: boolean;
-    onReactionMessage: boolean;
     onPollResponse: boolean;
+    onPresenceChanged: boolean;
+    onReactionMessage: boolean;
     onRevokedMessage: boolean;
     onSelfMessage: boolean;
+    readMessage: boolean;
     ignore: string[];
   };
   websocket: {

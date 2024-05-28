@@ -124,7 +124,7 @@ This server use config.ts file to define some options, default values are:
 ```javascript
 {
   /* secret key to genereta access token */
-  secretKey: 'THISISMYSECURETOKEN',
+  secretKey: 'THISISMYSECRETKEY',
   host: 'http://localhost',
   port: '21465',
   // Device name for show on whatsapp device
@@ -260,7 +260,7 @@ To generate an access token, you must use your `SECRET_KEY`.
 Using the route:
 
 ```shell
-  curl -X POST --location "http://localhost:21465/api/mySession/THISISMYSECURETOKEN/generate-token"
+  curl -X POST --location "http://localhost:21465/api/mySession/THISISMYSECRETKEY/generate-token"
 ```
 
 ### Response:

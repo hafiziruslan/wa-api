@@ -1,21 +1,5 @@
-/*
- * Copyright 2021 WPPConnect Team
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 import { Chat } from '@wppconnect-team/wppconnect';
 import { Request, Response } from 'express';
-
 import { contactToArray, unlinkAsync } from '../util/functions';
 import { clientsArray } from '../util/sessionUtil';
 
@@ -46,7 +30,7 @@ function returnError(req: Request, res: Response, session: any, error: any) {
 export async function setProfileName(req: Request, res: Response) {
   /**
    * #swagger.tags = ["Profile"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -96,8 +80,8 @@ export async function setProfileName(req: Request, res: Response) {
 
 export async function showAllContacts(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Contact"]
-     #swagger.autoBody=false
+   * #swagger.tags = ["Contacts"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -120,10 +104,10 @@ export async function showAllContacts(req: Request, res: Response) {
 
 export async function getAllChats(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Chat"]
-   * #swagger.summary = 'Deprecated in favor of 'list-chats'
+   * #swagger.tags = ["Chats"]
+   * #swagger.summary = 'Deprecated in favor of list-chats'
    * #swagger.deprecated = true
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -146,7 +130,7 @@ export async function getAllChats(req: Request, res: Response) {
 
 export async function listChats(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Chat"]
+   * #swagger.tags = ["Chats"]
    * #swagger.summary = 'Retrieve a list of chats'
    * #swagger.description = 'This body is not required. Not sent body to get all chats or filter.'
      #swagger.security = [{
@@ -241,10 +225,10 @@ export async function listChats(req: Request, res: Response) {
 
 export async function getAllChatsWithMessages(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Chat"]
+   * #swagger.tags = ["Chats"]
    * #swagger.summary = 'Deprecated in favor of list-chats'
    * #swagger.deprecated = true
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -264,13 +248,10 @@ export async function getAllChatsWithMessages(req: Request, res: Response) {
     });
   }
 }
-/**
- * Depreciado em favor de getMessages
- */
 export async function getAllMessagesInChat(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+   * #swagger.tags = ["Chats"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -299,9 +280,9 @@ export async function getAllMessagesInChat(req: Request, res: Response) {
     } = req.query;
 
     let response;
-    for (const contato of contactToArray(phone, isGroup as boolean)) {
+    for (const contact of contactToArray(phone, isGroup as boolean)) {
       response = await req.client.getAllMessagesInChat(
-        contato,
+        contact,
         includeMe as boolean,
         includeNotifications as boolean
       );
@@ -320,8 +301,8 @@ export async function getAllMessagesInChat(req: Request, res: Response) {
 
 export async function getAllNewMessages(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+   * #swagger.tags = ["Chats"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -344,8 +325,8 @@ export async function getAllNewMessages(req: Request, res: Response) {
 
 export async function getAllUnreadMessages(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+   * #swagger.tags = ["Chats"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -368,8 +349,8 @@ export async function getAllUnreadMessages(req: Request, res: Response) {
 
 export async function getChatById(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+   * #swagger.tags = ["Chats"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -407,8 +388,8 @@ export async function getChatById(req: Request, res: Response) {
 
 export async function getMessageById(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+   * #swagger.tags = ["Chats"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -435,7 +416,7 @@ export async function getMessageById(req: Request, res: Response) {
 export async function getBatteryLevel(req: Request, res: Response) {
   /**
    * #swagger.tags = ["Misc"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -459,7 +440,7 @@ export async function getBatteryLevel(req: Request, res: Response) {
 export async function getHostDevice(req: Request, res: Response) {
   /**
    * #swagger.tags = ["Misc"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -488,7 +469,7 @@ export async function getHostDevice(req: Request, res: Response) {
 export async function getPhoneNumber(req: Request, res: Response) {
   /**
    * #swagger.tags = ["Misc"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -513,8 +494,8 @@ export async function getPhoneNumber(req: Request, res: Response) {
 
 export async function getBlockList(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Contact"]
-     #swagger.autoBody=false
+   * #swagger.tags = ["Contacts"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -525,8 +506,8 @@ export async function getBlockList(req: Request, res: Response) {
   const response = await req.client.getBlockList();
 
   try {
-    const blocked = response.map((contato: any) => {
-      return { phone: contato ? contato.split('@')[0] : '' };
+    const blocked = response.map((contact: any) => {
+      return { phone: contact ? contact.split('@')[0] : '' };
     });
 
     return res.status(200).json({ status: 'success', response: blocked });
@@ -542,8 +523,8 @@ export async function getBlockList(req: Request, res: Response) {
 
 export async function deleteChat(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+   * #swagger.tags = ["Chats"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -578,8 +559,8 @@ export async function deleteChat(req: Request, res: Response) {
 
   try {
     const results: any = {};
-    for (const contato of phone) {
-      results[contato] = await req.client.deleteChat(contato);
+    for (const contact of phone) {
+      results[contact] = await req.client.deleteChat(contact);
     }
     returnSucess(res, session, phone, results);
   } catch (error) {
@@ -588,8 +569,8 @@ export async function deleteChat(req: Request, res: Response) {
 }
 export async function deleteAllChats(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+   * #swagger.tags = ["Chats"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -615,8 +596,8 @@ export async function deleteAllChats(req: Request, res: Response) {
 
 export async function clearChat(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+   * #swagger.tags = ["Chats"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -652,8 +633,8 @@ export async function clearChat(req: Request, res: Response) {
 
   try {
     const results: any = {};
-    for (const contato of phone) {
-      results[contato] = await req.client.clearChat(contato);
+    for (const contact of phone) {
+      results[contact] = await req.client.clearChat(contact);
     }
     returnSucess(res, session, phone, results);
   } catch (error) {
@@ -663,8 +644,8 @@ export async function clearChat(req: Request, res: Response) {
 
 export async function clearAllChats(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+   * #swagger.tags = ["Chats"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -692,8 +673,8 @@ export async function clearAllChats(req: Request, res: Response) {
 
 export async function archiveChat(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+   * #swagger.tags = ["Chats"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -745,8 +726,8 @@ export async function archiveChat(req: Request, res: Response) {
 
 export async function archiveAllChats(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+   * #swagger.tags = ["Chats"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -772,9 +753,9 @@ export async function archiveAllChats(req: Request, res: Response) {
 
 export async function getAllChatsArchiveds(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Chat"]
+   * #swagger.tags = ["Chats"]
    * #swagger.description = 'Retrieves all archived chats.'
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -803,7 +784,7 @@ export async function getAllChatsArchiveds(req: Request, res: Response) {
 export async function deleteMessage(req: Request, res: Response) {
   /**
    * #swagger.tags = ["Messages"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -866,7 +847,7 @@ export async function deleteMessage(req: Request, res: Response) {
 export async function reactMessage(req: Request, res: Response) {
   /**
    * #swagger.tags = ["Messages"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -916,9 +897,10 @@ export async function reactMessage(req: Request, res: Response) {
 
 export async function reply(req: Request, res: Response) {
   /**
-   * #swagger.deprecated=true
+   * #swagger.deprecated = true
+   * #swagger.summary = 'Deprecated in favor of send-reply'
      #swagger.tags = ["Messages"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -968,7 +950,7 @@ export async function reply(req: Request, res: Response) {
 export async function forwardMessages(req: Request, res: Response) {
   /**
      #swagger.tags = ["Messages"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1023,7 +1005,7 @@ export async function forwardMessages(req: Request, res: Response) {
 export async function markUnseenMessage(req: Request, res: Response) {
   /**
      #swagger.tags = ["Messages"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1070,8 +1052,8 @@ export async function markUnseenMessage(req: Request, res: Response) {
 
 export async function blockContact(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Contact"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Contacts"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1118,8 +1100,8 @@ export async function blockContact(req: Request, res: Response) {
 
 export async function unblockContact(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Contact"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Contacts"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1166,8 +1148,8 @@ export async function unblockContact(req: Request, res: Response) {
 
 export async function pinChat(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Chats"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1209,8 +1191,8 @@ export async function pinChat(req: Request, res: Response) {
   const { phone, state } = req.body;
 
   try {
-    for (const contato of phone) {
-      await req.client.pinChat(contato, state === 'true', false);
+    for (const contact of phone) {
+      await req.client.pinChat(contact, state === 'true', false);
     }
 
     return res
@@ -1229,7 +1211,7 @@ export async function pinChat(req: Request, res: Response) {
 export async function setProfilePic(req: Request, res: Response) {
   /**
      #swagger.tags = ["Profile"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1270,9 +1252,10 @@ export async function setProfilePic(req: Request, res: Response) {
 
 export async function getUnreadMessages(req: Request, res: Response) {
   /**
-     #swagger.deprecated=true
+     #swagger.deprecated = true
+     #swagger.summary = 'Deprecated in favor of all-unread-message'
      #swagger.tags = ["Messages"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1293,8 +1276,8 @@ export async function getUnreadMessages(req: Request, res: Response) {
 
 export async function getChatIsOnline(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Chats"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1321,8 +1304,8 @@ export async function getChatIsOnline(req: Request, res: Response) {
 
 export async function getLastSeen(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Chats"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1350,8 +1333,8 @@ export async function getLastSeen(req: Request, res: Response) {
 
 export async function getListMutes(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Chats"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1379,9 +1362,10 @@ export async function getListMutes(req: Request, res: Response) {
 
 export async function loadAndGetAllMessagesInChat(req: Request, res: Response) {
   /**
-     #swagger.deprecated=true
-     #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+     #swagger.deprecated = true
+     #swagger.summary = 'Deprecated in favor of list-chats'
+     #swagger.tags = ["Chats"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1417,7 +1401,7 @@ export async function loadAndGetAllMessagesInChat(req: Request, res: Response) {
 export async function getMessages(req: Request, res: Response) {
   /**
      #swagger.tags = ["Messages"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1457,7 +1441,7 @@ export async function getMessages(req: Request, res: Response) {
 export async function sendContactVcard(req: Request, res: Response) {
   /**
      #swagger.tags = ["Messages"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1494,9 +1478,9 @@ export async function sendContactVcard(req: Request, res: Response) {
   const { phone, contactsId, name = null, isGroup = false } = req.body;
   try {
     let response;
-    for (const contato of contactToArray(phone, isGroup)) {
+    for (const contact of contactToArray(phone, isGroup)) {
       response = await req.client.sendContactVcard(
-        `${contato}`,
+        `${contact}`,
         contactsId,
         name
       );
@@ -1515,8 +1499,8 @@ export async function sendContactVcard(req: Request, res: Response) {
 
 export async function sendMute(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Chats"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1554,8 +1538,8 @@ export async function sendMute(req: Request, res: Response) {
 
   try {
     let response;
-    for (const contato of contactToArray(phone, isGroup)) {
-      response = await req.client.sendMute(`${contato}`, time, type);
+    for (const contact of contactToArray(phone, isGroup)) {
+      response = await req.client.sendMute(`${contact}`, time, type);
     }
 
     return res.status(200).json({ status: 'success', response: response });
@@ -1569,8 +1553,8 @@ export async function sendMute(req: Request, res: Response) {
 
 export async function sendSeen(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Chats"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1605,8 +1589,8 @@ export async function sendSeen(req: Request, res: Response) {
 
   try {
     const results: any = [];
-    for (const contato of phone) {
-      results.push(await req.client.sendSeen(contato));
+    for (const contact of phone) {
+      results.push(await req.client.sendSeen(contact));
     }
     returnSucess(res, session, phone, results);
   } catch (error) {
@@ -1616,9 +1600,10 @@ export async function sendSeen(req: Request, res: Response) {
 
 export async function setChatState(req: Request, res: Response) {
   /**
-     #swagger.deprecated=true
-     #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+     #swagger.deprecated = true
+     #swagger.summary = 'Deprecated in favor of typing & recording'
+     #swagger.tags = ["Chats"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1654,8 +1639,8 @@ export async function setChatState(req: Request, res: Response) {
 
   try {
     let response;
-    for (const contato of contactToArray(phone, isGroup)) {
-      response = await req.client.setChatState(`${contato}`, chatstate);
+    for (const contact of contactToArray(phone, isGroup)) {
+      response = await req.client.setChatState(`${contact}`, chatstate);
     }
 
     return res.status(200).json({ status: 'success', response: response });
@@ -1672,7 +1657,7 @@ export async function setChatState(req: Request, res: Response) {
 export async function setTemporaryMessages(req: Request, res: Response) {
   /**
      #swagger.tags = ["Messages"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1708,8 +1693,8 @@ export async function setTemporaryMessages(req: Request, res: Response) {
 
   try {
     let response;
-    for (const contato of contactToArray(phone, isGroup)) {
-      response = await req.client.setTemporaryMessages(`${contato}`, value);
+    for (const contact of contactToArray(phone, isGroup)) {
+      response = await req.client.setTemporaryMessages(`${contact}`, value);
     }
 
     return res.status(200).json({ status: 'success', response: response });
@@ -1725,8 +1710,8 @@ export async function setTemporaryMessages(req: Request, res: Response) {
 
 export async function setTyping(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Chats"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1761,9 +1746,9 @@ export async function setTyping(req: Request, res: Response) {
   const { phone, value = true, isGroup = false } = req.body;
   try {
     let response;
-    for (const contato of contactToArray(phone, isGroup)) {
-      if (value) response = await req.client.startTyping(contato);
-      else response = await req.client.stopTyping(contato);
+    for (const contact of contactToArray(phone, isGroup)) {
+      if (value) response = await req.client.startTyping(contact);
+      else response = await req.client.stopTyping(contact);
     }
 
     return res.status(200).json({ status: 'success', response: response });
@@ -1777,8 +1762,8 @@ export async function setTyping(req: Request, res: Response) {
 
 export async function setRecording(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Chats"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1816,9 +1801,9 @@ export async function setRecording(req: Request, res: Response) {
   const { phone, value = true, duration, isGroup = false } = req.body;
   try {
     let response;
-    for (const contato of contactToArray(phone, isGroup)) {
-      if (value) response = await req.client.startRecording(contato, duration);
-      else response = await req.client.stopRecoring(contato);
+    for (const contact of contactToArray(phone, isGroup)) {
+      if (value) response = await req.client.startRecording(contact, duration);
+      else response = await req.client.stopRecoring(contact);
     }
 
     return res.status(200).json({ status: 'success', response: response });
@@ -1834,8 +1819,8 @@ export async function setRecording(req: Request, res: Response) {
 
 export async function checkNumberStatus(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Misc"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Profiles"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1849,8 +1834,8 @@ export async function checkNumberStatus(req: Request, res: Response) {
   const { phone } = req.params;
   try {
     let response;
-    for (const contato of contactToArray(phone, false)) {
-      response = await req.client.checkNumberStatus(`${contato}`);
+    for (const contact of contactToArray(phone, false)) {
+      response = await req.client.checkNumberStatus(`${contact}`);
     }
 
     return res.status(200).json({ status: 'success', response: response });
@@ -1866,8 +1851,8 @@ export async function checkNumberStatus(req: Request, res: Response) {
 
 export async function getContact(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Contacts"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1881,8 +1866,8 @@ export async function getContact(req: Request, res: Response) {
   const { phone = true } = req.params;
   try {
     let response;
-    for (const contato of contactToArray(phone as string, false)) {
-      response = await req.client.getContact(contato);
+    for (const contact of contactToArray(phone as string, false)) {
+      response = await req.client.getContact(contact);
     }
 
     return res.status(200).json({ status: 'success', response: response });
@@ -1896,8 +1881,8 @@ export async function getContact(req: Request, res: Response) {
 
 export async function getAllContacts(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Contact"]
-     #swagger.autoBody=false
+   * #swagger.tags = ["Contacts"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1921,9 +1906,10 @@ export async function getAllContacts(req: Request, res: Response) {
 
 export async function getNumberProfile(req: Request, res: Response) {
   /**
-     #swagger.deprecated=true
-     #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+     #swagger.deprecated = true
+     #swagger.summary = 'Deprecated in favor of check-number-status'
+     #swagger.tags = ["Profile"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1937,8 +1923,8 @@ export async function getNumberProfile(req: Request, res: Response) {
   const { phone = true } = req.params;
   try {
     let response;
-    for (const contato of contactToArray(phone as string, false)) {
-      response = await req.client.getNumberProfile(contato);
+    for (const contact of contactToArray(phone as string, false)) {
+      response = await req.client.getNumberProfile(contact);
     }
 
     return res.status(200).json({ status: 'success', response: response });
@@ -1954,8 +1940,8 @@ export async function getNumberProfile(req: Request, res: Response) {
 
 export async function getProfilePicFromServer(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Contact"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Contacts"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1970,8 +1956,8 @@ export async function getProfilePicFromServer(req: Request, res: Response) {
   const { isGroup = false } = req.query;
   try {
     let response;
-    for (const contato of contactToArray(phone as string, isGroup as boolean)) {
-      response = await req.client.getProfilePicFromServer(contato);
+    for (const contact of contactToArray(phone as string, isGroup as boolean)) {
+      response = await req.client.getProfilePicFromServer(contact);
     }
 
     return res.status(200).json({ status: 'success', response: response });
@@ -1987,8 +1973,8 @@ export async function getProfilePicFromServer(req: Request, res: Response) {
 
 export async function getStatus(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Contact"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Contacts"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -2002,8 +1988,8 @@ export async function getStatus(req: Request, res: Response) {
   const { phone = true } = req.params;
   try {
     let response;
-    for (const contato of contactToArray(phone as string, false)) {
-      response = await req.client.getStatus(contato);
+    for (const contact of contactToArray(phone as string, false)) {
+      response = await req.client.getStatus(contact);
     }
     return res.status(200).json({ status: 'success', response: response });
   } catch (error) {
@@ -2017,7 +2003,7 @@ export async function getStatus(req: Request, res: Response) {
 export async function setProfileStatus(req: Request, res: Response) {
   /**
      #swagger.tags = ["Profile"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -2066,8 +2052,8 @@ export async function setProfileStatus(req: Request, res: Response) {
 }
 export async function rejectCall(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Misc"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Chats"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -2112,7 +2098,7 @@ export async function rejectCall(req: Request, res: Response) {
 export async function starMessage(req: Request, res: Response) {
   /**
      #swagger.tags = ["Messages"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -2160,7 +2146,7 @@ export async function starMessage(req: Request, res: Response) {
 export async function getReactions(req: Request, res: Response) {
   /**
      #swagger.tags = ["Messages"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -2189,7 +2175,7 @@ export async function getReactions(req: Request, res: Response) {
 export async function getVotes(req: Request, res: Response) {
   /**
      #swagger.tags = ["Messages"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -2216,7 +2202,7 @@ export async function chatWoot(req: Request, res: Response) {
   /**
      #swagger.tags = ["Misc"]
      #swagger.description = 'You can point your Chatwoot to this route so that it can perform functions.'
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -2271,7 +2257,7 @@ export async function chatWoot(req: Request, res: Response) {
 
       if (event != 'message_created' && message_type != 'outgoing')
         return res.status(200);
-      for (const contato of contactToArray(phone, false)) {
+      for (const contact of contactToArray(phone, false)) {
         if (message_type == 'outgoing') {
           if (message.attachments) {
             const base_url = `${client.config.chatWoot.baseURL
@@ -2279,13 +2265,13 @@ export async function chatWoot(req: Request, res: Response) {
                 message.attachments[0].data_url.indexOf('/rails/') + 1
               )}`;
             await client.sendFile(
-              `${contato}`,
+              `${contact}`,
               base_url,
               'file',
               message.content
             );
           } else {
-            await client.sendText(contato, message.content);
+            await client.sendText(contact, message.content);
           }
         }
       }
@@ -2305,7 +2291,7 @@ export async function chatWoot(req: Request, res: Response) {
 export async function getPlatformFromMessage(req: Request, res: Response) {
   /**
    * #swagger.tags = ["Misc"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]

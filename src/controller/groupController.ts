@@ -1,20 +1,4 @@
-/*
- * Copyright 2023 WPPConnect Team
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 import { Request, Response } from 'express';
-
 import {
   contactToArray,
   groupNameToArray,
@@ -23,10 +7,10 @@ import {
 
 export async function getAllGroups(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Group"]
+     #swagger.tags = ["Groups"]
      #swagger.deprecated = true
      #swagger.summary = 'Deprecated in favor of 'list-chats'
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -48,8 +32,8 @@ export async function getAllGroups(req: Request, res: Response) {
 
 export async function joinGroupByCode(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Group"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Groups"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -106,8 +90,8 @@ export async function joinGroupByCode(req: Request, res: Response) {
 
 export async function createGroup(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Group"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Groups"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -181,8 +165,8 @@ export async function createGroup(req: Request, res: Response) {
 
 export async function leaveGroup(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Group"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Groups"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -227,8 +211,8 @@ export async function leaveGroup(req: Request, res: Response) {
 
 export async function getGroupMembers(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Group"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Groups"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -256,8 +240,8 @@ export async function getGroupMembers(req: Request, res: Response) {
 
 export async function addParticipant(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Group"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Groups"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -320,8 +304,8 @@ export async function addParticipant(req: Request, res: Response) {
 
 export async function removeParticipant(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Group"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Groups"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -386,8 +370,8 @@ export async function removeParticipant(req: Request, res: Response) {
 
 export async function promoteParticipant(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Group"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Groups"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -447,8 +431,8 @@ export async function promoteParticipant(req: Request, res: Response) {
 
 export async function demoteParticipant(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Group"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Groups"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -508,8 +492,8 @@ export async function demoteParticipant(req: Request, res: Response) {
 
 export async function getGroupAdmins(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Group"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Groups"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -562,8 +546,8 @@ export async function getGroupAdmins(req: Request, res: Response) {
 
 export async function getGroupInviteLink(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Group"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Groups"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -604,8 +588,8 @@ export async function getGroupInviteLink(req: Request, res: Response) {
 
 export async function revokeGroupInviteLink(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Group"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Groups"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -651,8 +635,8 @@ export async function revokeGroupInviteLink(req: Request, res: Response) {
 
 export async function getAllBroadcastList(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Chat"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Chats"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -675,8 +659,8 @@ export async function getAllBroadcastList(req: Request, res: Response) {
 
 export async function getGroupInfoFromInviteLink(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Group"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Groups"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -713,8 +697,8 @@ export async function getGroupInfoFromInviteLink(req: Request, res: Response) {
 
 export async function getGroupMembersIds(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Group"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Groups"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -744,8 +728,8 @@ export async function getGroupMembersIds(req: Request, res: Response) {
 
 export async function setGroupDescription(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Group"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Groups"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -789,8 +773,8 @@ export async function setGroupDescription(req: Request, res: Response) {
 
 export async function setGroupProperty(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Group"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Groups"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -835,8 +819,8 @@ export async function setGroupProperty(req: Request, res: Response) {
 
 export async function setGroupSubject(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Group"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Groups"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -880,8 +864,8 @@ export async function setGroupSubject(req: Request, res: Response) {
 
 export async function setMessagesAdminsOnly(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Group"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Groups"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -925,8 +909,8 @@ export async function setMessagesAdminsOnly(req: Request, res: Response) {
 
 export async function changePrivacyGroup(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Group"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Groups"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -975,8 +959,8 @@ export async function changePrivacyGroup(req: Request, res: Response) {
 
 export async function setGroupProfilePic(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Group"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Groups"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -1028,8 +1012,8 @@ export async function setGroupProfilePic(req: Request, res: Response) {
 
 export async function getCommonGroups(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Group"]
-     #swagger.autoBody=false
+     #swagger.tags = ["Groups"]
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]

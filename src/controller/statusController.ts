@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-
 import { unlinkAsync } from '../util/functions';
 
 function returnError(req: Request, res: Response, error: any) {
@@ -16,7 +15,7 @@ async function returnSucess(res: Response, data: any) {
 export async function sendTextStorie(req: Request, res: Response) {
   /**
      #swagger.tags = ["Status"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -76,7 +75,7 @@ export async function sendTextStorie(req: Request, res: Response) {
 export async function sendImageStorie(req: Request, res: Response) {
   /**
      #swagger.tags = ["Status"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -129,7 +128,7 @@ export async function sendImageStorie(req: Request, res: Response) {
 export async function sendVideoStorie(req: Request, res: Response) {
   /**
      #swagger.tags = ["Status"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]

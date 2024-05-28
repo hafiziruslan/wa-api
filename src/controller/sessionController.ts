@@ -1,25 +1,9 @@
-/*
- * Copyright 2021 WPPConnect Team
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permclearSessionissions and
- * limitations under the License.
- */
 import { Message, Whatsapp } from '@wppconnect-team/wppconnect';
 import { Request, Response } from 'express';
 import fs from 'fs';
 import mime from 'mime-types';
 import QRCode from 'qrcode';
 import { Logger } from 'winston';
-
 import { version } from '../../package.json';
 import config from '../config';
 import CreateSessionUtil from '../util/createSessionUtil';
@@ -58,9 +42,7 @@ async function downloadFileFunction(
     }
   } catch (e) {
     logger.error(e);
-    logger.warn(
-      'Error when decrypting the media, trying to download direct...'
-    );
+    logger.warn('Error when decrypting the media, trying to download direct...');
     try {
       const buffer = await client.downloadMedia(message);
       const filename = `./WhatsAppImages/file${message.t}`;
@@ -101,7 +83,7 @@ export async function download(message: any, client: any, logger: any) {
 export async function startAllSessions(req: Request, res: Response) {
   /**
    * #swagger.tags = ["Auth"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.operationId = 'startAllSessions'
      #swagger.security = [{
             "bearerAuth": []
@@ -110,7 +92,7 @@ export async function startAllSessions(req: Request, res: Response) {
       schema: '60123456789'
      }
      #swagger.parameters["secretkey"] = {
-      schema: 'THISISMYSECURECODE'
+      schema: 'THISISMYSECRETKEY'
      }
    */
   const { secretkey } = req.params;
@@ -146,7 +128,7 @@ export async function startAllSessions(req: Request, res: Response) {
 export async function showAllSessions(req: Request, res: Response) {
   /**
    * #swagger.tags = ["Auth"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.operationId = 'showAllSessions'
      #swagger.autoQuery=false
      #swagger.autoHeaders=false
@@ -154,7 +136,7 @@ export async function showAllSessions(req: Request, res: Response) {
             "bearerAuth": []
      }]
      #swagger.parameters["secretkey"] = {
-      schema: 'THISISMYSECURETOKEN'
+      schema: 'THISISMYSECRETKEY'
      }
    */
   const { secretkey } = req.params;
@@ -187,7 +169,7 @@ export async function showAllSessions(req: Request, res: Response) {
 export async function startSession(req: Request, res: Response) {
   /**
    * #swagger.tags = ["Auth"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.operationId = 'startSession'
      #swagger.security = [{
             "bearerAuth": []
@@ -225,7 +207,7 @@ export async function closeSession(req: Request, res: Response) {
   /**
    * #swagger.tags = ["Auth"]
      #swagger.operationId = 'closeSession'
-     #swagger.autoBody=true
+     #swagger.autoBody = true
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -266,7 +248,7 @@ export async function logOutSession(req: Request, res: Response) {
    * #swagger.tags = ["Auth"]
      #swagger.operationId = 'logoutSession'
    * #swagger.description = 'This route logout and delete session data'
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -325,7 +307,7 @@ export async function checkConnectionSession(req: Request, res: Response) {
   /**
    * #swagger.tags = ["Auth"]
      #swagger.operationId = 'CheckConnectionState'
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -345,7 +327,7 @@ export async function checkConnectionSession(req: Request, res: Response) {
 export async function downloadMediaByMessage(req: Request, res: Response) {
   /**
    * #swagger.tags = ["Messages"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.operationId = 'downloadMediabyMessage'
      #swagger.security = [{
             "bearerAuth": []
@@ -411,8 +393,8 @@ export async function downloadMediaByMessage(req: Request, res: Response) {
 
 export async function getMediaByMessage(req: Request, res: Response) {
   /**
-   * #swagger.tags = ["Messages"]
-     #swagger.autoBody=false
+   * #swagger.tags = ["Misc"]
+     #swagger.autoBody = false
      #swagger.operationId = 'getMediaByMessage'
      #swagger.security = [{
             "bearerAuth": []
@@ -500,7 +482,7 @@ export async function getSessionState(req: Request, res: Response) {
 export async function getQrCode(req: Request, res: Response) {
   /**
    * #swagger.tags = ["Auth"]
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.operationId = 'getQrCode'
      #swagger.security = [{
             "bearerAuth": []
@@ -546,10 +528,10 @@ export async function getQrCode(req: Request, res: Response) {
 
 export async function killServiceWorker(req: Request, res: Response) {
   /**
-   * #swagger.ignore=true
+   * #swagger.ignore = true
    * #swagger.tags = ["Messages"]
      #swagger.operationId = 'killServiceWorkier'
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -573,10 +555,10 @@ export async function killServiceWorker(req: Request, res: Response) {
 
 export async function restartService(req: Request, res: Response) {
   /**
-   * #swagger.ignore=true
+   * #swagger.ignore = true
    * #swagger.tags = ["Messages"]
      #swagger.operationId = 'restartService'
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -601,7 +583,7 @@ export async function subscribePresence(req: Request, res: Response) {
   /**
    * #swagger.tags = ["Misc"]
      #swagger.operationId = 'subscribePresence'
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]
@@ -665,7 +647,7 @@ export async function editBusinessProfile(req: Request, res: Response) {
    * #swagger.tags = ["Profile"]
      #swagger.operationId = 'editBusinessProfile'
    * #swagger.description = 'Edit your Business profile'
-     #swagger.autoBody=false
+     #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
      }]

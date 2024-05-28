@@ -1,22 +1,6 @@
-/*
- * Copyright 2023 WPPConnect Team
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
 import { Request, Response } from 'express';
 import fs from 'fs';
-
 import { logger } from '..';
 import config from '../config';
 import { backupSessions, restoreSessions } from '../util/manageSession';
@@ -28,10 +12,10 @@ export async function backupAllSessions(req: Request, res: Response) {
      * #swagger.description = 'Please, open the router in your browser, in swagger this not run'
      * #swagger.produces = ['application/octet-stream']
      * #swagger.consumes = ['application/octet-stream']
-       #swagger.autoBody=false
+       #swagger.autoBody = false
        #swagger.parameters["secretkey"] = {
           required: true,
-          schema: 'THISISMYSECURETOKEN'
+          schema: 'THISISMYSECRETKEY'
        }
        #swagger.responses[200] = {
         description: 'A ZIP file contaings your backup. Please, open this link in your browser',
@@ -66,10 +50,10 @@ export async function backupAllSessions(req: Request, res: Response) {
 export async function restoreAllSessions(req: Request, res: Response) {
   /**
    #swagger.tags = ["Auth"]
-   #swagger.autoBody=false
+   #swagger.autoBody = false
     #swagger.parameters["secretkey"] = {
     required: true,
-    schema: 'THISISMYSECURETOKEN'
+    schema: 'THISISMYSECRETKEY'
     }
     #swagger.requestBody = {
       required: true,
@@ -113,7 +97,7 @@ export async function restoreAllSessions(req: Request, res: Response) {
 export async function takeScreenshot(req: Request, res: Response) {
   /**
    #swagger.tags = ["Misc"]
-   #swagger.autoBody=false
+   #swagger.autoBody = false
     #swagger.security = [{
           "bearerAuth": []
     }]
@@ -137,10 +121,10 @@ export async function takeScreenshot(req: Request, res: Response) {
 export async function clearSessionData(req: Request, res: Response) {
   /**
    #swagger.tags = ["Auth"]
-   #swagger.autoBody=false
+   #swagger.autoBody = false
     #swagger.parameters["secretkey"] = {
     required: true,
-    schema: 'THISISMYSECURETOKEN'
+    schema: 'THISISMYSECRETKEY'
     }
     #swagger.parameters["session"] = {
     schema: '60123456789'
@@ -185,7 +169,7 @@ export async function setLimit(req: Request, res: Response) {
   /**
    #swagger.tags = ["Misc"]
    #swagger.description = 'Change limits of whatsapp web. Types value: maxMediaSize, maxFileSize, maxShare, statusVideoMaxDuration, unlimitedPin;'
-   #swagger.autoBody=false
+   #swagger.autoBody = false
     #swagger.security = [{
           "bearerAuth": []
     }]

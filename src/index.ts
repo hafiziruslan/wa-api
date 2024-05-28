@@ -1,18 +1,3 @@
-/*
- * Copyright 2021 WPPConnect Team
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
 import { defaultLogger } from '@wppconnect-team/wppconnect';
 import cors from 'cors';
@@ -23,7 +8,6 @@ import mergeDeep from 'merge-deep';
 import process from 'process';
 import { Server as Socket } from 'socket.io';
 import { Logger } from 'winston';
-
 import { version } from '../package.json';
 import config from './config';
 import { convert } from './mapper/index';
@@ -129,7 +113,7 @@ export function initServer(serverOptions: Partial<ServerOptions>): {
   if (config.log.level === 'error' || config.log.level === 'warn') {
     console.log(`\x1b[33m ======================================================
 Attention:
-Your configuration is configured to show only a few logs, before opening an issue, 
+Your configuration is configured to show only a few logs, before opening an issue,
 please set the log to 'silly', copy the log that shows the error and open your issue.
 ======================================================
 `);

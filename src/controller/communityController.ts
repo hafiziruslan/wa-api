@@ -1,25 +1,10 @@
-/*
- * Copyright 2023 WPPConnect Team
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
 import { Request, Response } from 'express';
 
 export async function createCommunity(req: Request, res: Response) {
   /**
        #swagger.tags = ["Community"]
-       #swagger.autoBody=false
+       #swagger.autoBody = false
        #swagger.security = [{
               "bearerAuth": []
        }]
@@ -74,7 +59,7 @@ export async function createCommunity(req: Request, res: Response) {
 export async function deactivateCommunity(req: Request, res: Response) {
   /**
          #swagger.tags = ["Community"]
-         #swagger.autoBody=false
+         #swagger.autoBody = false
          #swagger.security = [{
                 "bearerAuth": []
          }]
@@ -121,7 +106,7 @@ export async function deactivateCommunity(req: Request, res: Response) {
 export async function addSubgroupsCommunity(req: Request, res: Response) {
   /**
     #swagger.tags = ["Community"]
-    #swagger.autoBody=false
+    #swagger.autoBody = false
     #swagger.security = [{
             "bearerAuth": []
     }]
@@ -170,7 +155,7 @@ export async function addSubgroupsCommunity(req: Request, res: Response) {
 export async function removeSubgroupsCommunity(req: Request, res: Response) {
   /**
      #swagger.tags = ["Community"]
-    #swagger.autoBody=false
+    #swagger.autoBody = false
     #swagger.security = [{
             "bearerAuth": []
     }]
@@ -219,7 +204,7 @@ export async function removeSubgroupsCommunity(req: Request, res: Response) {
 export async function demoteCommunityParticipant(req: Request, res: Response) {
   /**
     #swagger.tags = ["Community"]
-    #swagger.autoBody=false
+    #swagger.autoBody = false
     #swagger.security = [{
             "bearerAuth": []
     }]
@@ -271,7 +256,7 @@ export async function demoteCommunityParticipant(req: Request, res: Response) {
 export async function promoteCommunityParticipant(req: Request, res: Response) {
   /**
     #swagger.tags = ["Community"]
-    #swagger.autoBody=false
+    #swagger.autoBody = false
     #swagger.security = [{
             "bearerAuth": []
     }]
@@ -323,7 +308,7 @@ export async function promoteCommunityParticipant(req: Request, res: Response) {
 export async function getCommunityParticipants(req: Request, res: Response) {
   /**
     #swagger.tags = ["Community"]
-    #swagger.autoBody=false
+    #swagger.autoBody = false
     #swagger.security = [{
             "bearerAuth": []
     }]

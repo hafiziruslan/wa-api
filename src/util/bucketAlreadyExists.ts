@@ -1,5 +1,4 @@
 import { HeadBucketCommand, S3Client } from '@aws-sdk/client-s3';
-
 import { logger } from '..';
 import config from '../config';
 

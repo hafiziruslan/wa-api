@@ -18,7 +18,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import sanitize from 'sanitize-filename';
-
 import { logger } from '../../..';
 import { SessionToken, TokenStore } from '../types';
 

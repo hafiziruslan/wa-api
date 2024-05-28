@@ -24,8 +24,7 @@ const doc = {
   info: {
     version: '2.0.0',
     title: 'WPPConnect API Rest',
-    description:
-      'Welcome to the wppconnect-server API documentation. This API provides a set of endpoints to interact with the wppconnect-server application, allowing you to build integrations and automate interactions with WhatsApp.',
+    description: 'Welcome to the wppconnect-server API documentation. This API provides a set of endpoints to interact with the wppconnect-server application, allowing you to build integrations and automate interactions with WhatsApp.',
   },
   host: `${config.host}:${config.port}`,
   securityDefinitions: {
@@ -38,7 +37,7 @@ const doc = {
   tags: [
     {
       name: 'Auth',
-      description: 'Manage authentication operations',
+      description: 'Manages authentication operations',
     },
     {
       name: 'Profile',
@@ -50,32 +49,31 @@ const doc = {
     },
     {
       name: 'Chat',
-      description: 'Manages chat-related operations.',
-    },
-    {
-      name: 'Community',
-      description: 'Manage communities.',
+      description: 'Manages chat-related operations, such as archiving, clearing, and deleting chats',
     },
     {
       name: 'Messages',
-      description: 'Handles message-related operations, including sending, receiving, and managing messages.',
+      description: 'Handles message-related operations, including sending, receiving, and managing messages',
     },
     {
-      name: 'Status Stories',
+      name: 'Status',
       description: 'Handles operations related to status stories, such as viewing, updating, and managing status stories',
     },
     {
-      name: 'Labels',
-      description: 'Manages labels or tags associated with chats or messages for organization and categorization purposes.',
+      name: 'Group',
+      description: 'Manages operations related to WhatsApp groups, such as creating, modifying, and managing group settings',
     },
     {
-      name: 'Group',
-      description:
-        'Manages operations related to WhatsApp groups, such as creating, modifying, and managing group settings.',
+      name: 'Community',
+      description: 'Manages communities operations, such as creating, modifying, and deleting communities',
     },
     {
       name: 'Newsletter',
-      description: 'Handles WhatsApp Channel operations such as creating, modifying, deleting channels.',
+      description: 'Handles WhatsApp Channel operations such as creating, modifying, deleting channels',
+    },
+    {
+      name: 'Labels',
+      description: 'Manages labels or tags associated with chats or messages for organization and categorization purposes',
     },
     {
       name: 'Catalog',
@@ -83,7 +81,7 @@ const doc = {
     },
     {
       name: 'Misc',
-      description: 'Handles miscellaneous operations that do not fit into other specific categories.',
+      description: 'Handles miscellaneous operations that do not fit into other specific categories',
     },
   ],
   definitions: {},

@@ -7728,7 +7728,7 @@
     },
     "/send-image-storie": {
       "post": {
-        "tags": ["Status Stories"],
+        "tags": ["Status"],
         "summary": "Send Image Storie ",
         "description": "Send Image Storie",
         "operationId": "SendImageStorie",
@@ -7839,7 +7839,7 @@
     },
     "/send-video-storie": {
       "post": {
-        "tags": ["Status Stories"],
+        "tags": ["Status"],
         "summary": "Send Video Storie ",
         "description": "Send Video Storie",
         "operationId": "SendVideoStorie",
@@ -7950,7 +7950,7 @@
     },
     "/send-text-storie": {
       "post": {
-        "tags": ["Status Stories"],
+        "tags": ["Status"],
         "summary": "Send Text Storie ",
         "description": "Send Text Storie",
         "operationId": "SendTextStorie",
@@ -21439,7 +21439,7 @@
       "description": "Profile Methods"
     },
     {
-      "name": "Status Stories",
+      "name": "Status",
       "description": "Status Stories Methods"
     },
     {

@@ -221,6 +221,54 @@
         }
       }
     },
+    "/api/{secretkey}/start-all": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "operationId": "startAllSessions",
+        "parameters": [
+          {
+            "name": "secretkey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "THISISMYSECRETKEY"
+            }
+          },
+          {
+            "name": "session",
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            },
+            "in": "query"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/api/{secretkey}/show-all-sessions": {
       "get": {
         "tags": [
@@ -341,54 +389,6 @@
           },
           "500": {
             "description": "Internal Server Error"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
-      }
-    },
-    "/api/{secretkey}/start-all": {
-      "post": {
-        "tags": [
-          "Auth"
-        ],
-        "description": "",
-        "operationId": "startAllSessions",
-        "parameters": [
-          {
-            "name": "secretkey",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "example": "THISISMYSECRETKEY"
-            }
-          },
-          {
-            "name": "session",
-            "schema": {
-              "type": "string",
-              "example": "60123456789"
-            },
-            "in": "query"
-          },
-          {
-            "name": "authorization",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
           }
         },
         "security": [

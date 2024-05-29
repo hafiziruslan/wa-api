@@ -1004,7 +1004,7 @@ export async function forwardMessages(req: Request, res: Response) {
 
 export async function markUnseenMessage(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Messages"]
+     #swagger.tags = ["Chats"]
      #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []
@@ -1819,7 +1819,7 @@ export async function setRecording(req: Request, res: Response) {
 
 export async function checkNumberStatus(req: Request, res: Response) {
   /**
-     #swagger.tags = ["Profiles"]
+     #swagger.tags = ["Profile"]
      #swagger.autoBody = false
      #swagger.security = [{
             "bearerAuth": []

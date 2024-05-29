@@ -26,13 +26,13 @@ const routes: Router = Router();
 //Auth
 routes.post('/api/:session/:secretkey/generate-token', encryptSession);
 routes.post('/api/:session/:secretkey/clear-session-data', MiscController.clearSessionData);
-routes.get('/api/:secretkey/backup-sessions', MiscController.backupAllSessions);
 routes.post('/api/:secretkey/restore-sessions', upload.single('file'), MiscController.restoreAllSessions);
+routes.get('/api/:secretkey/backup-sessions', MiscController.backupAllSessions);
+routes.post('/api/:secretkey/start-all', SessionController.startAllSessions);
 routes.get('/api/:secretkey/show-all-sessions', SessionController.showAllSessions);
 routes.get('/api/:session/check-connection-session', verifyToken, SessionController.checkConnectionSession);
 routes.get('/api/:session/status-session', verifyToken, SessionController.getSessionState);
 routes.get('/api/:session/qrcode-session', verifyToken, SessionController.getQrCode);
-routes.post('/api/:secretkey/start-all', SessionController.startAllSessions);
 routes.post('/api/:session/start-session', verifyToken, SessionController.startSession);
 routes.post('/api/:session/close-session', verifyToken, SessionController.closeSession);
 routes.post('/api/:session/logout-session', verifyToken, statusConnection, SessionController.logOutSession);
@@ -117,8 +117,8 @@ routes.post('/api/:session/star-message', verifyToken, statusConnection, DeviceC
 routes.post('/api/:session/temporary-messages', verifyToken, statusConnection, DeviceController.setTemporaryMessages);
 
 //Status
-routes.post('/api/:session/send-image-storie', upload.single('file'), verifyToken, statusConnection, StatusController.sendImageStorie);
 routes.post('/api/:session/send-text-storie', verifyToken, statusConnection, StatusController.sendTextStorie);
+routes.post('/api/:session/send-image-storie', upload.single('file'), verifyToken, statusConnection, StatusController.sendImageStorie);
 routes.post('/api/:session/send-video-storie', upload.single('file'), verifyToken, statusConnection, StatusController.sendVideoStorie);
 
 //Groups
@@ -129,20 +129,20 @@ routes.get('/api/:session/group-invite-link/:groupId', verifyToken, statusConnec
 routes.get('/api/:session/group-members-ids/:groupId', verifyToken, statusConnection, GroupController.getGroupMembersIds);
 routes.get('/api/:session/group-members/:groupId', verifyToken, statusConnection, GroupController.getGroupMembers);
 routes.get('/api/:session/group-revoke-link/:groupId', verifyToken, statusConnection, GroupController.revokeGroupInviteLink);
-routes.post('/api/:session/add-participant-group', verifyToken, statusConnection, GroupController.addParticipant);
-routes.post('/api/:session/change-privacy-group', verifyToken, statusConnection, GroupController.changePrivacyGroup);
 routes.post('/api/:session/create-group', verifyToken, statusConnection, GroupController.createGroup);
-routes.post('/api/:session/demote-participant-group', verifyToken, statusConnection, GroupController.demoteParticipant);
+routes.post('/api/:session/group-subject', verifyToken, statusConnection, GroupController.setGroupSubject);
 routes.post('/api/:session/group-description', verifyToken, statusConnection, GroupController.setGroupDescription);
-routes.post('/api/:session/group-info-from-invite-link', verifyToken, statusConnection, GroupController.getGroupInfoFromInviteLink);
 routes.post('/api/:session/group-pic', upload.single('file'), verifyToken, statusConnection, GroupController.setGroupProfilePic);
 routes.post('/api/:session/group-property', verifyToken, statusConnection, GroupController.setGroupProperty);
-routes.post('/api/:session/group-subject', verifyToken, statusConnection, GroupController.setGroupSubject);
-routes.post('/api/:session/join-code', verifyToken, statusConnection, GroupController.joinGroupByCode);
-routes.post('/api/:session/leave-group', verifyToken, statusConnection, GroupController.leaveGroup);
 routes.post('/api/:session/messages-admins-only', verifyToken, statusConnection, GroupController.setMessagesAdminsOnly);
 routes.post('/api/:session/promote-participant-group', verifyToken, statusConnection, GroupController.promoteParticipant);
+routes.post('/api/:session/demote-participant-group', verifyToken, statusConnection, GroupController.demoteParticipant);
+routes.post('/api/:session/add-participant-group', verifyToken, statusConnection, GroupController.addParticipant);
 routes.post('/api/:session/remove-participant-group', verifyToken, statusConnection, GroupController.removeParticipant);
+routes.post('/api/:session/group-info-from-invite-link', verifyToken, statusConnection, GroupController.getGroupInfoFromInviteLink);
+routes.post('/api/:session/change-privacy-group', verifyToken, statusConnection, GroupController.changePrivacyGroup);
+routes.post('/api/:session/join-code', verifyToken, statusConnection, GroupController.joinGroupByCode);
+routes.post('/api/:session/leave-group', verifyToken, statusConnection, GroupController.leaveGroup);
 
 //Community
 routes.get('/api/:session/community-participants/:id', verifyToken, statusConnection, CommunityController.getCommunityParticipants);

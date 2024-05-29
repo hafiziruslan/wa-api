@@ -5,7 +5,7 @@ import winston from 'winston';
 // because there is no winston.format.simple()
 const jsonLogFileFormat = winston.format.combine(
   winston.format.errors({ stack: true }),
-  winston.format.timestamp(),
+  winston.format.timestamp({ format: 'YYYY-MM-DDTHH:mm:ss.SSS' }),
   winston.format.prettyPrint()
 );
 
@@ -39,7 +39,7 @@ export function createLogger(options: any) {
   if (options.logger.indexOf('file') > -1) {
     logger.add(
       new winston.transports.File({
-        filename: './log/app.logg',
+        filename: './log/app.log',
         level: log_level,
         maxsize: 10485760,
         maxFiles: 3,

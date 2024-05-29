@@ -561,7 +561,15 @@ export async function getGroupInviteLink(req: Request, res: Response) {
           schema: {
             type: "object",
             properties: {
-              groupId: { type: "string" }
+              "groupId": { type: "string" }
+            },
+            required: ["groupId"]
+          },
+          examples: {
+            "Default": {
+              value: {
+                "groupId": "<groupId>"
+              }
             }
           }
         }
@@ -603,7 +611,15 @@ export async function revokeGroupInviteLink(req: Request, res: Response) {
           schema: {
             type: "object",
             properties: {
-              $groupId: { type: "string" }
+              "groupId": { type: "string" }
+            },
+            required: ["groupId"]
+          },
+          examples: {
+            "Default": {
+              value: {
+                "groupId": "<groupId>"
+              }
             }
           }
         }
@@ -674,7 +690,15 @@ export async function getGroupInfoFromInviteLink(req: Request, res: Response) {
           schema: {
             type: "object",
             properties: {
-              $invitecode: { type: "string" }
+              "invitecode": { type: "string" }
+            },
+            required: ["invitecode"]
+          },
+          examples: {
+            "Default": {
+              value: {
+                "invitecode": "<groupInviteCode>"
+              }
             }
           }
         }
@@ -743,8 +767,17 @@ export async function setGroupDescription(req: Request, res: Response) {
           schema: {
             type: "object",
             properties: {
-              $groupId: { type: "string" },
-              $description: { type: "string" }
+              "groupId": { type: "string" },
+              "description": { type: "string" }
+            },
+            required: ["groupId"]
+          },
+          examples: {
+            "Default": {
+              value: {
+                "groupId": "<groupId>",
+                "description": "some text here"
+              }
             }
           }
         }
@@ -788,9 +821,19 @@ export async function setGroupProperty(req: Request, res: Response) {
           schema: {
             type: "object",
             properties: {
-              $groupId: { type: "string" },
-              $property: { type: "string" },
-              $value: { type: "boolean" }
+              "groupId": { type: "string" },
+              "property": { type: "string" },
+              "value": { type: "boolean" }
+            },
+            required: ["groupId"]
+          },
+          examples: {
+            "Default": {
+              value: {
+                "groupId": "<groupId>",
+                "property": "membershipApprovalMode / isLidAddressingMode / reportToAdminMode / isAutoApproveMode",
+                "value": true
+              }
             }
           }
         }
@@ -834,8 +877,17 @@ export async function setGroupSubject(req: Request, res: Response) {
           schema: {
             type: "object",
             properties: {
-              $groupId: { type: "string" },
-              $title: { type: "string" }
+              "groupId": { type: "string" },
+              "title": { type: "string" }
+            },
+            required: ["groupId"]
+          },
+          examples: {
+            "Default": {
+              value: {
+                "groupId": "<groupId>",
+                "title": "<newSubject>"
+              }
             }
           }
         }
@@ -879,9 +931,19 @@ export async function setMessagesAdminsOnly(req: Request, res: Response) {
           schema: {
             type: "object",
             properties: {
-              $groupId: { type: "string" },
-              $value: { type: "boolean" }
+              "groupId": { type: "string" },
+              "value": { type: "boolean" }
+            },
+            required: ["groupId"]
+          },
+          examples: {
+            "Default": {
+              value: {
+                "groupId": "<groupId>",
+                "value": true
+              }
             }
+          }
           }
         }
       }
@@ -924,8 +986,17 @@ export async function changePrivacyGroup(req: Request, res: Response) {
           schema: {
             type: "object",
             properties: {
-              $groupId: { type: "string" },
-              $status: { type: "boolean" }
+              "groupId": { type: "string" },
+              "status": { type: "boolean" }
+            },
+            required: ["groupId"]
+          },
+          examples: {
+            "Default": {
+              value: {
+                "groupId": "<groupId>",
+                "status": true
+              }
             }
           }
         }
@@ -939,7 +1010,7 @@ export async function changePrivacyGroup(req: Request, res: Response) {
       await req.client.setGroupProperty(
         group,
         'restrict' as any,
-        status === 'true'
+        status === 'true',
       );
     }
 
@@ -974,8 +1045,17 @@ export async function setGroupProfilePic(req: Request, res: Response) {
           schema: {
             type: "object",
             properties: {
-              $groupId: { type: "string" },
-              $path: { type: "string" }
+              "groupId": { type: "string" },
+              "path": { type: "string" }
+            },
+            required: ["groupId"]
+          },
+          examples: {
+            "Default": {
+              value: {
+                "groupId": "<groupId>",
+                "path": "<url>"
+              }
             }
           }
         }

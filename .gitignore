@@ -1,3 +1,5 @@
+*.bak
+*.bat
 *.png
 *.sln
 *.tgz
@@ -15,13 +17,11 @@
 /package-lock.json
 /swagger-docs
 /tokens
+/tokens/*
 /uploads
+/userData
 /WhatsAppImages
 /wppconnect-server.njsproj
 /wppconnect-server.njsproj.user
 /yarn-error.log
 /yarn.lock
-backupFolder
-tokens/*
-userDataDir
-wppconnect_tokens/*

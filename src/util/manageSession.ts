@@ -78,7 +78,7 @@ export async function restoreSessions(
     }
     try {
       fileSystem.cpSync(
-        __dirname + '/../../restore/userDataDir',
+        __dirname + '/../../restore/usersData',
         config.customUserDataDir,
         {
           force: false,
@@ -86,7 +86,7 @@ export async function restoreSessions(
         }
       );
     } catch (error) {
-      logger.info("Folder 'userDataDir' not found.");
+      logger.info("Folder 'usersData' not found.");
     }
     logger.info('Sessions successfully restored. Starting...');
     startAllSessions(config, logger);

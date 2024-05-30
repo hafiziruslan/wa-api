@@ -1,4 +1,3 @@
-
 import { defaultLogger } from '@wppconnect-team/wppconnect';
 import cors from 'cors';
 import express, { Express, NextFunction, Router } from 'express';
@@ -93,10 +92,10 @@ export function initServer(serverOptions: Partial<ServerOptions>): {
   });
 
   io.on('connection', (sock) => {
-    logger.info(`ID: ${sock.id} entrou`);
+    logger.info(`ID: ${sock.id} in`);
 
     sock.on('disconnect', () => {
-      logger.info(`ID: ${sock.id} saiu`);
+      logger.info(`ID: ${sock.id} out`);
     });
   });
 

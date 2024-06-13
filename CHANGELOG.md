@@ -1,3 +1,13 @@
+## 2.5.0 (2024-06-13)
+
+### Bug Fixes
+
+- **deps:** update dependency @wppconnect-team/wppconnect to ^1.32.0 ([#1901](https://github.com/wppconnect-team/wppconnect-server/issues/1901)) ([765810d](https://github.com/wppconnect-team/wppconnect-server/commit/765810dde565d79c1b1c1aa7571010a79b054edd))
+
+## 2.4.6 (2024-06-12)
+
+## 2.4.5 (2024-06-11)
+
 ## 2.4.4 (2024-05-04)
 
 ## 2.4.3 (2024-04-25)
@@ -14,13 +24,13 @@
 
 ## 2.4.1 (2024-03-12)
 
-# 2.4.0 (2024-01-26)
+## 2.4.0 (2024-01-26)
 
 ### Bug Fixes
 
 - Replaced ts-node with tsx ([66ae213](https://github.com/wppconnect-team/wppconnect-server/commit/66ae213adab5cc6aeeab77e6ee422e2ad9ee0c22))
 
-# 2.3.0 (2023-11-15)
+## 2.3.0 (2023-11-15)
 
 ## 2.2.5 (2023-08-27)
 
@@ -40,7 +50,7 @@
 
 ## 2.2.1 (2023-06-02)
 
-# 2.2.0 (2023-06-02)
+## 2.2.0 (2023-06-02)
 
 ### Bug Fixes
 
@@ -50,11 +60,11 @@
 
 ## 2.1.1 (2023-06-01)
 
-# 2.1.0 (2023-06-01)
+## 2.1.0 (2023-06-01)
 
 ## 2.0.1 (2023-04-14)
 
-# 2.0.0 (2023-04-03)
+## 2.0.0 (2023-04-03)
 
 ### Bug Fixes
 
@@ -82,7 +92,7 @@
 
 ## 1.8.1 (2022-12-28)
 
-# 1.8.0 (2022-12-15)
+## 1.8.0 (2022-12-15)
 
 ## 1.7.4 (2022-12-12)
 
@@ -100,7 +110,7 @@
 
 ## 1.7.1 (2022-11-02)
 
-# 1.7.0 (2022-11-02)
+## 1.7.0 (2022-11-02)
 
 ## 1.6.4 (2022-10-20)
 
@@ -122,15 +132,15 @@
 
 - **deps:** update dependency @wppconnect-team/wppconnect to ^1.16.0 ([#860](https://github.com/wppconnect-team/wppconnect-server/issues/860)) ([5f72973](https://github.com/wppconnect-team/wppconnect-server/commit/5f72973788d2844d2297acd73b96e76001b70c37))
 
-# 1.6.0 (2022-07-20)
+## 1.6.0 (2022-07-20)
 
-# 1.5.0 (2022-07-12)
+## 1.5.0 (2022-07-12)
 
 ### Features
 
 - Delete all chats close [#483](https://github.com/wppconnect-team/wppconnect-server/issues/483) ([f47a253](https://github.com/wppconnect-team/wppconnect-server/commit/f47a253b1024778f9c3ed5d14a638689be464936))
 
-# 1.4.0 (2022-06-29)
+## 1.4.0 (2022-06-29)
 
 ## 1.3.4 (2022-06-20)
 
@@ -140,13 +150,13 @@
 
 ## 1.3.1 (2022-05-10)
 
-# 1.3.0 (2022-05-10)
+## 1.3.0 (2022-05-10)
 
 ### Features
 
 - Updated all packages ([5e7b9f2](https://github.com/wppconnect-team/wppconnect-server/commit/5e7b9f2240ccc0e44a129296e92dd6fb5393380e))
 
-# 1.2.0 (2022-04-25)
+## 1.2.0 (2022-04-25)
 
 ## 1.1.23 (2022-03-13)
 
@@ -186,7 +196,7 @@
 
 ### Bug Fixes
 
-- block/unblock contato. ([9401b16](https://github.com/wppconnect-team/wppconnect-server/commit/9401b168ce08eb62c5ea392db82df34b69753775))
+- block/unblock contact. ([9401b16](https://github.com/wppconnect-team/wppconnect-server/commit/9401b168ce08eb62c5ea392db82df34b69753775))
 
 ## 1.1.5 (2021-10-01)
 
@@ -198,7 +208,7 @@
 
 ## 1.1.1 (2021-08-06)
 
-# 1.1.0 (2021-08-04)
+## 1.1.0 (2021-08-04)
 
 ## 1.0.3 (2021-07-15)
 
@@ -209,4 +219,4 @@
 ### Bug Fixes
 
 - Archive only unarchived chats ([#37](https://github.com/wppconnect-team/wppconnect-server/issues/37)) ([5985296](https://github.com/wppconnect-team/wppconnect-server/commit/5985296d97a9ccb19625e7ddbc07ecacc0ce65c6))
-- Corrigido a entrada principal de arquivo JS ([f513c64](https://github.com/wppconnect-team/wppconnect-server/commit/f513c64247fe01e9297df27036ad1141278e87c2))
+- Fixed to the main js file input ([f513c64](https://github.com/wppconnect-team/wppconnect-server/commit/f513c64247fe01e9297df27036ad1141278e87c2))

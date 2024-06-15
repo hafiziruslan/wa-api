@@ -28,7 +28,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.596.0",
+    "@aws-sdk/client-s3": "^3.598.0",
     "@wppconnect-team/wppconnect": "^1.32.0",
     "archiver": "^7.0.1",
     "axios": "^1.7.2",
@@ -82,7 +82,7 @@
     "commitizen": "^4.3.0",
     "conventional-changelog-cli": "^5.0.0",
     "eslint": "^8.57.0",
-    "eslint-config-love": "^52.0.0",
+    "eslint-config-love": "^53.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-n": "^17.9.0",
@@ -108,7 +108,7 @@
     "swagger-ui-dist": "^5.17.14",
     "ts-jest": "^29.1.4",
     "ts-loader": "^9.5.1",
-    "tsx": "^4.15.4",
+    "tsx": "^4.15.5",
     "typescript": "^5.4.5",
     "webpack": "^5.92.0",
     "webpack-cli": "^5.1.4"

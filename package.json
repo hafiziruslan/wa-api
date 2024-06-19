@@ -1,6 +1,6 @@
 {
   "name": "@wppconnect/server",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "Project designed to dynamically authenticate WhatsApp Web automation with multi-clients. Backend made in Nodejs (express, socketio), FrontEnd (ReactJS)",
   "main": "dist/index.js",
   "author": "kingaspx",
@@ -28,8 +28,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.598.0",
-    "@wppconnect-team/wppconnect": "^1.32.1",
+    "@aws-sdk/client-s3": "^3.600.0",
+    "@wppconnect-team/wppconnect": "^1.32.2",
     "archiver": "^7.0.1",
     "axios": "^1.7.2",
     "bcrypt": "^5.1.1",

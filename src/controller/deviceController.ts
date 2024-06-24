@@ -1,5 +1,21 @@
+/*
+ * Copyright 2021 WPPConnect Team
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 import { Chat } from '@wppconnect-team/wppconnect';
 import { Request, Response } from 'express';
+
 import { contactToArray, unlinkAsync } from '../util/functions';
 import { clientsArray } from '../util/sessionUtil';
 
@@ -284,7 +300,7 @@ export async function getAllMessagesInChat(req: Request, res: Response) {
       response = await req.client.getAllMessagesInChat(
         contact,
         includeMe as boolean,
-        includeNotifications as boolean
+        includeNotifications as boolean,
       );
     }
 
@@ -661,13 +677,11 @@ export async function clearAllChats(req: Request, res: Response) {
     return res.status(201).json({ status: 'success' });
   } catch (e) {
     req.logger.error(e);
-    return res
-      .status(500)
-      .json({
-        status: 'error',
-        message: 'Error on clear all chats',
-        error: e
-      });
+    return res.status(500).json({
+      status: 'error',
+      message: 'Error on clear all chats',
+      error: e,
+    });
   }
 }
 
@@ -714,13 +728,11 @@ export async function archiveChat(req: Request, res: Response) {
     return res.status(201).json({ status: 'success', response: response });
   } catch (e) {
     req.logger.error(e);
-    return res
-      .status(500)
-      .json({
-        status: 'error',
-        message: 'Error on archive chat',
-        error: e
-      });
+    return res.status(500).json({
+      status: 'error',
+      message: 'Error on archive chat',
+      error: e,
+    });
   }
 }
 
@@ -826,7 +838,7 @@ export async function deleteMessage(req: Request, res: Response) {
       `${phone}`,
       messageId,
       onlyLocal,
-      deleteMediaInDevice
+      deleteMediaInDevice,
     );
     if (result) {
       return res
@@ -1387,7 +1399,7 @@ export async function loadAndGetAllMessagesInChat(req: Request, res: Response) {
     const response = await req.client.loadAndGetAllMessagesInChat(
       `${phone}@c.us`,
       includeMe as boolean,
-      includeNotifications as boolean
+      includeNotifications as boolean,
     );
 
     return res.status(200).json({ status: 'success', response: response });
@@ -1482,7 +1494,7 @@ export async function sendContactVcard(req: Request, res: Response) {
       response = await req.client.sendContactVcard(
         `${contact}`,
         contactsId,
-        name
+        name,
       );
     }
 
@@ -2260,15 +2272,16 @@ export async function chatWoot(req: Request, res: Response) {
       for (const contact of contactToArray(phone, false)) {
         if (message_type == 'outgoing') {
           if (message.attachments) {
-            const base_url = `${client.config.chatWoot.baseURL
-              }/${message.attachments[0].data_url.substring(
-                message.attachments[0].data_url.indexOf('/rails/') + 1
-              )}`;
+            const base_url = `${
+              client.config.chatWoot.baseURL
+            }/${message.attachments[0].data_url.substring(
+              message.attachments[0].data_url.indexOf('/rails/') + 1,
+            )}`;
             await client.sendFile(
               `${contact}`,
               base_url,
               'file',
-              message.content
+              message.content,
             );
           } else {
             await client.sendText(contact, message.content);
@@ -2304,7 +2317,7 @@ export async function getPlatformFromMessage(req: Request, res: Response) {
    */
   try {
     const result = await req.client.getPlatformFromMessage(
-      req.params.messageId
+      req.params.messageId,
     );
     return res.status(200).json(result);
   } catch (e) {

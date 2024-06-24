@@ -1,8 +1,24 @@
+/*
+ * Copyright 2021 WPPConnect Team
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 import archiver from 'archiver';
 import { Request } from 'express';
 import fileSystem from 'fs';
 import unzipper from 'unzipper';
+
 import { logger } from '..';
 import config from '../config';
 import { startAllSessions } from './functions';
@@ -14,7 +30,7 @@ export function backupSessions(req: Request): Promise<any> {
   return new Promise(async (resolve, reject) => {
     await closeAllSessions(req);
     const output = fileSystem.createWriteStream(
-      __dirname + '/../backupSessions.zip'
+      __dirname + '/../backupSessions.zip',
     );
     const archive = archiver('zip', {
       zlib: { level: 9 }, // Sets the compression level.
@@ -28,7 +44,7 @@ export function backupSessions(req: Request): Promise<any> {
     fileSystem.cpSync(
       config.customUserDataDir,
       __dirname + '/../../backupFolder',
-      { force: true, recursive: true }
+      { force: true, recursive: true },
     );
 
     archive.directory(__dirname + '/../../backupFolder', 'userDataDir');
@@ -37,7 +53,7 @@ export function backupSessions(req: Request): Promise<any> {
     output.on('close', () => {
       fileSystem.rmSync(__dirname + '/../../backupFolder', { recursive: true });
       const myStream = fileSystem.createReadStream(
-        __dirname + '/../backupSessions.zip'
+        __dirname + '/../backupSessions.zip',
       );
       myStream.pipe(req.res as any);
       myStream.on('end', () => {
@@ -55,7 +71,7 @@ export function backupSessions(req: Request): Promise<any> {
 
 export async function restoreSessions(
   req: Request,
-  file: Express.Multer.File
+  file: Express.Multer.File,
 ): Promise<any> {
   if (!file?.mimetype?.includes('zip')) {
     throw new Error('Please, send zipped file');
@@ -83,7 +99,7 @@ export async function restoreSessions(
         {
           force: false,
           recursive: true,
-        }
+        },
       );
     } catch (error) {
       logger.info("Folder 'usersData' not found.");

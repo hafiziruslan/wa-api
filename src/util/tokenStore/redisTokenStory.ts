@@ -1,3 +1,18 @@
+/*
+ * Copyright 2021 WPPConnect Team
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 import config from '../../config';
 import redisClient from '../db/redis/db';
 import { getIPAddress } from '../functions';
@@ -33,7 +48,7 @@ class RedisTokenStore {
                 this.client.config.webhook = object.webhook;
             }
             resolve(object);
-          }
+          },
         );
       }),
     setToken: (sessionName: string, tokenData: any) =>
@@ -45,7 +60,7 @@ class RedisTokenStore {
           JSON.stringify(tokenData),
           (err: any) => {
             return resolve(err ? false : true);
-          }
+          },
         );
       }),
     removeToken: (sessionName: string) =>
@@ -63,7 +78,7 @@ class RedisTokenStore {
           keys.forEach((item: any, indice: any) => {
             if (this.prefix !== '' && item.includes(this.prefix)) {
               keys[indice] = item.substring(
-                item.indexOf(this.prefix) + this.prefix.length
+                item.indexOf(this.prefix) + this.prefix.length,
               );
             }
           });

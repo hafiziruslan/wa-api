@@ -1,3 +1,18 @@
+/*
+ * Copyright 2021 WPPConnect Team
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 import { Request, Response } from 'express';
 
@@ -42,7 +57,7 @@ export async function createCommunity(req: Request, res: Response) {
     const response = await req.client.createCommunity(
       name,
       description,
-      groupIds
+      groupIds,
     );
 
     return res.status(200).json(response);
@@ -239,7 +254,7 @@ export async function demoteCommunityParticipant(req: Request, res: Response) {
   try {
     const response = await req.client.demoteCommunityParticipant(
       id,
-      participantsId
+      participantsId,
     );
 
     return res.status(200).json(response);
@@ -291,7 +306,7 @@ export async function promoteCommunityParticipant(req: Request, res: Response) {
   try {
     const response = await req.client.promoteCommunityParticipant(
       id,
-      participantsId
+      participantsId,
     );
 
     return res.status(200).json(response);

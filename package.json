@@ -79,6 +79,7 @@
     "@types/unzipper": "^0.10.9",
     "@typescript-eslint/eslint-plugin": "^7.13.1",
     "@typescript-eslint/parser": "^7.13.1",
+    "@typescript-eslint/typescript-estree": "^7.13.1",
     "commitizen": "^4.3.0",
     "conventional-changelog-cli": "^5.0.0",
     "eslint": "^8.57.0",
@@ -109,7 +110,7 @@
     "ts-jest": "^29.1.5",
     "ts-loader": "^9.5.1",
     "tsx": "^4.15.7",
-    "typescript": "^5.5.2",
+    "typescript": "5.4.5",
     "webpack": "^5.92.1",
     "webpack-cli": "^5.1.4"
   },

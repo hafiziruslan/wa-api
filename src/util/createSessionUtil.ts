@@ -1,5 +1,21 @@
+/*
+ * Copyright 2021 WPPConnect Team
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 import { create, SocketState } from '@wppconnect-team/wppconnect';
 import { Request } from 'express';
+
 import { download } from '../controller/sessionController';
 import { WhatsAppServer } from '../types/WhatsAppServer';
 import chatWootClient from './chatWootClient';
@@ -12,7 +28,7 @@ export default class CreateSessionUtil {
     if (client.config.chatWoot && !client._chatWootClient)
       client._chatWootClient = new chatWootClient(
         client.config.chatWoot,
-        client.session
+        client.session,
       );
     return client._chatWootClient;
   }
@@ -21,7 +37,7 @@ export default class CreateSessionUtil {
     req: any,
     clientsArray: any,
     session: string,
-    res?: any
+    res?: any,
   ) {
     try {
       let client = this.getClient(session) as any;
@@ -62,7 +78,7 @@ export default class CreateSessionUtil {
               base64Qr: any,
               asciiQR: any,
               attempt: any,
-              urlCode: string
+              urlCode: string,
             ) => {
               this.exportQR(req, base64Qr, urlCode, client, res);
             },
@@ -74,7 +90,7 @@ export default class CreateSessionUtil {
                 eventEmitter.emit(
                   `status-${client.session}`,
                   client,
-                  statusFind
+                  statusFind,
                 );
                 if (
                   statusFind === 'autocloseCalled' ||
@@ -92,8 +108,8 @@ export default class CreateSessionUtil {
                 req.logger.info(statusFind + '\n\n');
               } catch (error) {}
             },
-          }
-        )
+          },
+        ),
       );
 
       client = clientsArray[session] = Object.assign(wppClient, client);
@@ -131,7 +147,7 @@ export default class CreateSessionUtil {
     qrCode: any,
     urlCode: any,
     client: WhatsAppServer,
-    res?: any
+    res?: any,
   ) {
     eventEmitter.emit(`qrcode-${client.session}`, qrCode, urlCode, client);
     Object.assign(client, {

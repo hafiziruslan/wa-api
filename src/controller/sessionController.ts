@@ -1,9 +1,25 @@
+/*
+ * Copyright 2021 WPPConnect Team
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 import { Message, Whatsapp } from '@wppconnect-team/wppconnect';
 import { Request, Response } from 'express';
 import fs from 'fs';
 import mime from 'mime-types';
 import QRCode from 'qrcode';
 import { Logger } from 'winston';
+
 import { version } from '../../package.json';
 import config from '../config';
 import CreateSessionUtil from '../util/createSessionUtil';
@@ -16,7 +32,7 @@ const SessionUtil = new CreateSessionUtil();
 async function downloadFileFunction(
   message: Message,
   client: Whatsapp,
-  logger: Logger
+  logger: Logger,
 ) {
   try {
     const buffer = await client.decryptFile(message);
@@ -42,7 +58,9 @@ async function downloadFileFunction(
     }
   } catch (e) {
     logger.error(e);
-    logger.warn('Error when decrypting the media, trying to download direct...');
+    logger.warn(
+      'Error when decrypting the media, trying to download direct...',
+    );
     try {
       const buffer = await client.downloadMedia(message);
       const filename = `./WhatsAppImages/file${message.t}`;
@@ -498,7 +516,7 @@ export async function getQrCode(req: Request, res: Response) {
         : null;
       const img = Buffer.from(
         (qr as any).replace(/^data:image\/(png|jpeg|jpg);base64,/, ''),
-        'base64'
+        'base64',
       );
 
       res.writeHead(200, {

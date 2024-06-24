@@ -1,3 +1,18 @@
+/*
+ * Copyright 2021 WPPConnect Team
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 import {
   CreateBucketCommand,
   PutObjectCommand,
@@ -12,6 +27,7 @@ import mimetypes from 'mime-types';
 import os from 'os';
 import path from 'path';
 import { promisify } from 'util';
+
 import config from '../config';
 import { convert } from '../mapper/index';
 import { ServerOptions } from '../types/ServerOptions';
@@ -30,7 +46,7 @@ if (config?.websocket?.uploadS3) {
 export function contactToArray(
   number: any,
   isGroup?: boolean,
-  isNewsletter?: boolean
+  isNewsletter?: boolean,
 ) {
   const localArr: any = [];
   if (Array.isArray(number)) {
@@ -97,7 +113,7 @@ export async function callWebHook(
   client: any,
   req: Request,
   event: any,
-  data: any
+  data: any,
 ) {
   const webhook =
     client?.config.webhook || req.serverOptions.webhook.url || false;
@@ -182,7 +198,7 @@ export async function autoDownload(client: any, req: any, message: any) {
             new CreateBucketCommand({
               Bucket: bucketName,
               ObjectOwnership: 'ObjectWriter',
-            })
+            }),
           );
           await s3Client.send(
             new PutPublicAccessBlockCommand({
@@ -192,7 +208,7 @@ export async function autoDownload(client: any, req: any, message: any) {
                 IgnorePublicAcls: false,
                 BlockPublicPolicy: false,
               },
-            })
+            }),
           );
         }
 
@@ -203,7 +219,7 @@ export async function autoDownload(client: any, req: any, message: any) {
             Body: buffer,
             ContentType: message.mimetype,
             ACL: 'public-read',
-          })
+          }),
         );
 
         message.fileUrl = `https://${bucketName}.s3.amazonaws.com/${fileName}`;
@@ -219,7 +235,7 @@ export async function autoDownload(client: any, req: any, message: any) {
 export async function startAllSessions(config: any, logger: any) {
   try {
     await api.post(
-      `${config.host}:${config.port}/api/${config.secretKey}/start-all`
+      `${config.host}:${config.port}/api/${config.secretKey}/start-all`,
     );
   } catch (e) {
     logger.error(e);
@@ -270,10 +286,10 @@ async function archive(client: any, req: any) {
         if (DaysBetween(date) > req.serverOptions.archive.daysToArchive) {
           await client.archiveChat(
             chats[i].id.id || chats[i].id._serialized,
-            true
+            true,
           );
           await sleep(
-            Math.floor(Math.random() * req.serverOptions.archive.waitTime + 1)
+            Math.floor(Math.random() * req.serverOptions.archive.waitTime + 1),
           );
         }
       }
@@ -293,12 +309,12 @@ function DaysBetween(StartDate: Date) {
   const start = Date.UTC(
     endDate.getFullYear(),
     endDate.getMonth(),
-    endDate.getDate()
+    endDate.getDate(),
   );
   const end = Date.UTC(
     StartDate.getFullYear(),
     StartDate.getMonth(),
-    StartDate.getDate()
+    StartDate.getDate(),
   );
 
   // so it's safe to divide by 24 hours

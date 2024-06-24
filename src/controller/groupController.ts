@@ -1,4 +1,20 @@
+/*
+ * Copyright 2021 WPPConnect Team
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 import { Request, Response } from 'express';
+
 import {
   contactToArray,
   groupNameToArray,
@@ -138,7 +154,7 @@ export async function createGroup(req: Request, res: Response) {
     for (const group of groupNameToArray(name)) {
       response = await req.client.createGroup(
         group,
-        contactToArray(participants)
+        contactToArray(participants),
       );
       infoGroup.push({
         name: group,
@@ -197,7 +213,10 @@ export async function leaveGroup(req: Request, res: Response) {
 
     return res.status(200).json({
       status: 'success',
-      response: { messages: 'You left the group(s) successfully', group: groupId },
+      response: {
+        messages: 'You left the group(s) successfully',
+        group: groupId,
+      },
     });
   } catch (e) {
     req.logger.error(e);
@@ -345,7 +364,7 @@ export async function removeParticipant(req: Request, res: Response) {
     for (const group of groupToArray(groupId)) {
       response = await req.client.removeParticipant(
         group,
-        contactToArray(phone)
+        contactToArray(phone),
       );
       arrayGroups.push(response);
     }

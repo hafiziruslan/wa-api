@@ -1,0 +1,7700 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "2.0.0",
+    "title": "WPPConnect API Rest",
+    "description": "Welcome to the wppconnect-server API documentation. This API provides a set of endpoints to interact with the wppconnect-server application, allowing you to build integrations and automate interactions with WhatsApp."
+  },
+  "tags": [
+    {
+      "name": "Auth",
+      "description": "Manages authentication operations"
+    },
+    {
+      "name": "Profile",
+      "description": "Manages user profile-related operations, such as retrieving and updating profile information"
+    },
+    {
+      "name": "Contacts",
+      "description": "Handles operations related to contacts, such as managing contact lists, adding or removing contacts, and retrieving contact information."
+    },
+    {
+      "name": "Chats",
+      "description": "Manages chat-related operations, such as archiving, clearing, and deleting chats"
+    },
+    {
+      "name": "Messages",
+      "description": "Handles message-related operations, including sending, receiving, and managing messages"
+    },
+    {
+      "name": "Status",
+      "description": "Handles operations related to status stories, such as viewing, updating, and managing status stories"
+    },
+    {
+      "name": "Groups",
+      "description": "Manages operations related to WhatsApp groups, such as creating, modifying, and managing group settings"
+    },
+    {
+      "name": "Community",
+      "description": "Manages communities operations, such as creating, modifying, and deleting communities"
+    },
+    {
+      "name": "Newsletter",
+      "description": "Handles WhatsApp Channel operations such as creating, modifying, deleting channels"
+    },
+    {
+      "name": "Labels",
+      "description": "Manages labels or tags associated with chats or messages for organization and categorization purposes"
+    },
+    {
+      "name": "Catalogs",
+      "description": "Handles operations related to catalogs and business-related functionalities, such as managing product catalogs and business information."
+    },
+    {
+      "name": "Misc",
+      "description": "Handles miscellaneous operations that do not fit into other specific categories"
+    }
+  ],
+  "paths": {
+    "/api/{session}/{secretkey}/generate-token": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "secretkey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "THISISMYSECRETKEY"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/{session}/{secretkey}/clear-session-data": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "secretkey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "THISISMYSECRETKEY"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/{secretkey}/restore-sessions": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "secretkey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "THISISMYSECRETKEY"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": [
+                  "file"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{secretkey}/backup-sessions": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Please, open the router in your browser, in swagger this not run",
+        "produces": [
+          "application/zip"
+        ],
+        "parameters": [
+          {
+            "name": "secretkey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "THISISMYSECRETKEY"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A ZIP file contaings your backup. Please, open this link in your browser",
+            "content": {
+              "application/zip": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/{secretkey}/start-all": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "operationId": "startAllSessions",
+        "parameters": [
+          {
+            "name": "secretkey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "THISISMYSECRETKEY"
+            }
+          },
+          {
+            "name": "session",
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            },
+            "in": "query"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{secretkey}/show-all-sessions": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "operationId": "showAllSessions",
+        "parameters": [
+          {
+            "name": "secretkey",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "THISISMYSECRETKEY"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/check-connection-session": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "operationId": "CheckConnectionState",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/status-session": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "operationId": "closeSession",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/qrcode-session": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "operationId": "getQrCode",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/start-session": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "operationId": "startSession",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "webhook": {
+                    "type": "string"
+                  },
+                  "waitQrCode": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "example": {
+                "webhook": "",
+                "waitQrCode": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/close-session": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "operationId": "closeSession",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/logout-session": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "This route logout and delete session data",
+        "operationId": "logoutSession",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/check-number-status/{phone}": {
+      "get": {
+        "tags": [
+          "Profile"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "phone",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "601112345678"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/change-username": {
+      "post": {
+        "tags": [
+          "Profile"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "name": "My new name"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/profile-pic": {
+      "post": {
+        "tags": [
+          "Profile"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "file",
+            "in": "formData",
+            "required": true,
+            "schema": {
+              "type": "file"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/profile-status": {
+      "post": {
+        "tags": [
+          "Profile"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "My new status"
+                }
+              },
+              "required": [
+                "status"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "status": "My new status"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/edit-business-profile": {
+      "post": {
+        "tags": [
+          "Profile"
+        ],
+        "description": "Edit your Business profile",
+        "operationId": "editBusinessProfile",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "adress": {
+                  "type": "string",
+                  "example": "PETRONAS Twin Towers, Kuala Lumpur City Centre, 50088 Kuala Lumpur, Malaysia"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "user@domain.tld"
+                },
+                "categories": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "133436743388217"
+                    },
+                    "localized_display_name": {
+                      "type": "string",
+                      "example": "Arts and Entertainment"
+                    },
+                    "not_a_biz": {
+                      "type": "boolean",
+                      "example": false
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "localized_display_name",
+                    "not_a_biz"
+                  ]
+                },
+                "website": {
+                  "type": "array",
+                  "example": [
+                    "https://www.wppconnect.io",
+                    "https://www.teste2.my"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "adress",
+                "email",
+                "categories",
+                "website"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "adress": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "categories": {
+                    "type": "object"
+                  },
+                  "websites": {
+                    "type": "array"
+                  }
+                }
+              },
+              "example": {
+                "adress": "PETRONAS Twin Towers, Kuala Lumpur City Centre, 50088 Kuala Lumpur, Malaysia",
+                "email": "user@domain.tld",
+                "categories": {
+                  "$id": "133436743388217",
+                  "$localized_display_name": "Arts and Entertainment",
+                  "$not_a_biz": false
+                },
+                "website": [
+                  "https://www.wppconnect.io",
+                  "https://www.teste2.my"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/all-contacts": {
+      "get": {
+        "tags": [
+          "Contacts"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/contact/{phone}": {
+      "get": {
+        "tags": [
+          "Contacts"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "phone",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "601112345678"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/profile-pic/{phone}": {
+      "get": {
+        "tags": [
+          "Contacts"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "phone",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "601112345678"
+            }
+          },
+          {
+            "name": "isGroup",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/profile-status/{phone}": {
+      "get": {
+        "tags": [
+          "Contacts"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "phone",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "601112345678"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/blocklist": {
+      "get": {
+        "tags": [
+          "Contacts"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/block-contact": {
+      "post": {
+        "tags": [
+          "Contacts"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/unblock-contact": {
+      "post": {
+        "tags": [
+          "Contacts"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/list-chats": {
+      "get": {
+        "tags": [
+          "Chats"
+        ],
+        "summary": "Retrieve a list of chats",
+        "description": "This body is not required. Not sent body to get all chats or filter.",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "count": {
+                    "type": "number"
+                  },
+                  "direction": {
+                    "type": "string"
+                  },
+                  "onlyGroups": {
+                    "type": "boolean"
+                  },
+                  "onlyUsers": {
+                    "type": "boolean"
+                  },
+                  "onlyWithUnreadMessage": {
+                    "type": "boolean"
+                  },
+                  "withLabels": {
+                    "type": "array"
+                  }
+                }
+              },
+              "examples": {
+                "All options - Edit this": {
+                  "value": {
+                    "id": "<chatId>",
+                    "count": 20,
+                    "direction": "after",
+                    "onlyGroups": false,
+                    "onlyUsers": false,
+                    "onlyWithUnreadMessage": false,
+                    "withLabels": []
+                  }
+                },
+                "All chats": {
+                  "value": {}
+                },
+                "Chats group": {
+                  "value": {
+                    "onlyGroups": true
+                  }
+                },
+                "Only with unread messages": {
+                  "value": {
+                    "onlyWithUnreadMessage": false
+                  }
+                },
+                "Paginated results": {
+                  "value": {
+                    "id": "<chatId>",
+                    "count": 20,
+                    "direction": "after"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/all-chats-archived": {
+      "get": {
+        "tags": [
+          "Chats"
+        ],
+        "description": "Retrieves all archived chats.",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/all-broadcast-list": {
+      "get": {
+        "tags": [
+          "Chats"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/all-new-messages": {
+      "get": {
+        "tags": [
+          "Chats"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/all-unread-messages": {
+      "get": {
+        "tags": [
+          "Chats"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/all-messages-in-chat/{phone}": {
+      "get": {
+        "tags": [
+          "Chats"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "phone",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "601112345678"
+            }
+          },
+          {
+            "name": "isGroup",
+            "schema": {
+              "type": "string",
+              "example": "false"
+            },
+            "in": "query"
+          },
+          {
+            "name": "includeMe",
+            "schema": {
+              "type": "string",
+              "example": "true"
+            },
+            "in": "query"
+          },
+          {
+            "name": "includeNotifications",
+            "schema": {
+              "type": "string",
+              "example": "true"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/chat-by-id/{phone}": {
+      "get": {
+        "tags": [
+          "Chats"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "phone",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "601112345678"
+            }
+          },
+          {
+            "name": "isGroup",
+            "schema": {
+              "type": "string",
+              "example": "false"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/chat-is-online/{phone}": {
+      "get": {
+        "tags": [
+          "Chats"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "phone",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "601112345678"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/last-seen/{phone}": {
+      "get": {
+        "tags": [
+          "Chats"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "phone",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "601112345678"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/list-mutes/{type}": {
+      "get": {
+        "tags": [
+          "Chats"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "all"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/message-by-id/{messageId}": {
+      "get": {
+        "tags": [
+          "Chats"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "messageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "<message_id>"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/archive-chat": {
+      "post": {
+        "tags": [
+          "Chats"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "value": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false,
+                    "value": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/archive-all-chats": {
+      "post": {
+        "tags": [
+          "Chats"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/clear-chat": {
+      "post": {
+        "tags": [
+          "Chats"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/clear-all-chats": {
+      "post": {
+        "tags": [
+          "Chats"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/delete-chat": {
+      "post": {
+        "tags": [
+          "Chats"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/delete-all-chats": {
+      "post": {
+        "tags": [
+          "Chats"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/mark-unseen": {
+      "post": {
+        "tags": [
+          "Chats"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/send-seen": {
+      "post": {
+        "tags": [
+          "Chats"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/send-mute": {
+      "post": {
+        "tags": [
+          "Chats"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "time": {
+                    "type": "number"
+                  },
+                  "type": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false,
+                    "time": 1,
+                    "type": "hours"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/pin-chat": {
+      "post": {
+        "tags": [
+          "Chats"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "phone": {
+                  "type": "string",
+                  "example": "601112345678"
+                },
+                "isGroup": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "state": {
+                  "type": "boolean",
+                  "example": true
+                }
+              },
+              "required": [
+                "phone",
+                "isGroup",
+                "state"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "state": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "state": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/typing": {
+      "post": {
+        "tags": [
+          "Chats"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "value": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false,
+                    "value": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/recording": {
+      "post": {
+        "tags": [
+          "Chats"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "duration": {
+                    "type": "number"
+                  },
+                  "value": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false,
+                    "duration": 5,
+                    "value": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/reject-call": {
+      "post": {
+        "tags": [
+          "Chats"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "callId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "callId": "<callid>"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/get-messages/{phone}": {
+      "get": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "phone",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "601112345678@c.us"
+            }
+          },
+          {
+            "name": "count",
+            "schema": {
+              "type": "string",
+              "example": "20"
+            },
+            "in": "query"
+          },
+          {
+            "name": "direction",
+            "schema": {
+              "type": "string",
+              "example": "before"
+            },
+            "in": "query"
+          },
+          {
+            "name": "id",
+            "schema": {
+              "type": "string",
+              "example": "<message_id_to_use_direction>"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/reactions/{id}": {
+      "get": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "messageId",
+            "schema": {
+              "type": "string",
+              "example": "<messageId>"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/votes/{id}": {
+      "get": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "messageId",
+            "schema": {
+              "type": "string",
+              "example": "<messageId>"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/contact-vcard": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "contactsId": {
+                    "type": "array"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false,
+                    "name": "Name of contact",
+                    "contactsId": [
+                      "601112345678"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/delete-message": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "messageId": {
+                    "type": "string"
+                  },
+                  "onlyLocal": {
+                    "type": "boolean"
+                  },
+                  "deleteMediaInDevice": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false,
+                    "messageId": "<messageId>"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/download-media": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "operationId": "downloadMediabyMessage",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "messageId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "messageId": "<messageId>"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/edit-message": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "newText": {
+                    "type": "string"
+                  },
+                  "options": {
+                    "type": "object"
+                  }
+                }
+              },
+              "examples": {
+                "Edit a message": {
+                  "value": {
+                    "id": "true_601112345678@c.us_3EB04FCAA1527EB6D9DEC8",
+                    "newText": "New text for message"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/forward-messages": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "messageId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false,
+                    "messageId": "<messageId>"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/react-message": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "msgId": {
+                    "type": "string"
+                  },
+                  "reaction": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "msgId": "<messageId>",
+                    "reaction": "😜"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/send-reply": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "message": {
+                    "type": "string"
+                  },
+                  "messageId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false,
+                    "message": "Reply to message",
+                    "messageId": "<id_message>"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/send-file": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "isNewsletter": {
+                    "type": "boolean"
+                  },
+                  "filename": {
+                    "type": "string"
+                  },
+                  "caption": {
+                    "type": "string"
+                  },
+                  "base64": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false,
+                    "isNewsletter": false,
+                    "filename": "file name lol",
+                    "caption": "caption for my file",
+                    "base64": "<base64> string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/send-message": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "isNewsletter": {
+                    "type": "boolean"
+                  },
+                  "message": {
+                    "type": "string"
+                  },
+                  "options": {
+                    "type": "object"
+                  }
+                }
+              },
+              "examples": {
+                "Send message to contact": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false,
+                    "isNewsletter": false,
+                    "message": "Hi from WPPConnect"
+                  }
+                },
+                "Send message to group": {
+                  "value": {
+                    "phone": "8865623215244578",
+                    "isGroup": true,
+                    "message": "Hi from WPPConnect"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/send-link-preview": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "caption": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false,
+                    "url": "http://www.link.com",
+                    "caption": "Text for describe link"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/send-voice": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "path": {
+                    "type": "string"
+                  },
+                  "quotedMessageId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false,
+                    "path": "<path_file>",
+                    "quotedMessageId": "message Id"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/send-image": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "isNewsletter": {
+                    "type": "boolean"
+                  },
+                  "filename": {
+                    "type": "string"
+                  },
+                  "caption": {
+                    "type": "string"
+                  },
+                  "base64": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false,
+                    "isNewsletter": false,
+                    "filename": "file name lol",
+                    "caption": "caption for my file",
+                    "base64": "<base64> string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/send-location": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "lat": {
+                    "type": "string"
+                  },
+                  "lng": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false,
+                    "lat": "-89898322",
+                    "lng": "-545454",
+                    "title": "Rio de Janeiro",
+                    "address": "Av. N. S. de Copacabana, 25, Copacabana"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/send-mentioned": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "message": {
+                    "type": "string"
+                  },
+                  "mentioned": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "phone",
+                  "message",
+                  "mentioned"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": true,
+                    "message": "Your text message",
+                    "mentioned": [
+                      "@556593077171@c.us"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/send-poll-message": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "choices": {
+                    "type": "array"
+                  },
+                  "options": {
+                    "type": "object"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false,
+                    "name": "Poll name",
+                    "choices": [
+                      "Option 1",
+                      "Option 2",
+                      "Option 3"
+                    ],
+                    "options": {
+                      "selectableCount": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/send-sticker-gif": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "path": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "phone",
+                  "path"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": true,
+                    "path": "<path_file>"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/send-sticker": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "path": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "phone",
+                  "path"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": true,
+                    "path": "<path_file>"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/send-list-message": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "sections": {
+                    "type": "array"
+                  },
+                  "buttonText": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Send list message": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false,
+                    "description": "Desc for list",
+                    "buttonText": "Select a option",
+                    "sections": [
+                      {
+                        "title": "Section 1",
+                        "rows": [
+                          {
+                            "rowId": "my_custom_id",
+                            "title": "Test 1",
+                            "description": "Description 1"
+                          },
+                          {
+                            "rowId": "2",
+                            "title": "Test 2",
+                            "description": "Description 2"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/send-link-catalog": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phones": {
+                    "type": "array"
+                  },
+                  "message": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phones": [
+                      "<array_phone_id"
+                    ],
+                    "message": "Message"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/send-order-message": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "items": {
+                    "type": "object"
+                  },
+                  "options": {
+                    "type": "object"
+                  }
+                }
+              },
+              "examples": {
+                "Send with custom items": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false,
+                    "items": [
+                      {
+                        "type": "custom",
+                        "name": "Item test",
+                        "price": 120000,
+                        "qnt": 2
+                      },
+                      {
+                        "type": "custom",
+                        "name": "Item test 2",
+                        "price": 145000,
+                        "qnt": 2
+                      }
+                    ]
+                  }
+                },
+                "Send with product items": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false,
+                    "items": [
+                      {
+                        "type": "product",
+                        "id": "37878774457",
+                        "price": 148000,
+                        "qnt": 2
+                      }
+                    ]
+                  }
+                },
+                "Send with custom items and options": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false,
+                    "items": [
+                      {
+                        "type": "custom",
+                        "name": "Item test",
+                        "price": 120000,
+                        "qnt": 2
+                      }
+                    ],
+                    "options": {
+                      "tax": 10000,
+                      "shipping": 4000,
+                      "discount": 10000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/star-message": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "messageId": {
+                    "type": "string"
+                  },
+                  "star": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "messageId": "601112345678",
+                    "star": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/temporary-messages": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "value": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "phone": "601112345678",
+                    "isGroup": false,
+                    "value": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/send-text-storie": {
+      "post": {
+        "tags": [
+          "Status"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "example": "My new storie"
+                },
+                "options": {
+                  "type": "object",
+                  "properties": {
+                    "backgroundColor": {
+                      "type": "string",
+                      "example": "#0275d8"
+                    },
+                    "font": {
+                      "type": "number",
+                      "example": 2
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string"
+                  },
+                  "options": {
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "text"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "text": "My new storie",
+                    "options": {
+                      "backgroundColor": "#0275d8",
+                      "font": 2
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/send-image-storie": {
+      "post": {
+        "tags": [
+          "Status"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "path"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "path": "Path of your image"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/send-video-storie": {
+      "post": {
+        "tags": [
+          "Status"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "path"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "path": "Path of your video"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/common-groups/{wid}": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "wid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "601112345678@c.us"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/group-admins/{groupId}": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "groupId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "groupId"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "groupId": "<groupId>"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/group-invite-link/{groupId}": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "groupId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "groupId"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "groupId": "<groupId>"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/group-members-ids/{groupId}": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "<groupId>"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/group-members/{groupId}": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/group-revoke-link/{groupId}": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "groupId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "groupId"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "groupId": "<groupId>"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/create-group": {
+      "post": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "participants": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "participants",
+                  "name"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "participants": [
+                      "601112345678"
+                    ],
+                    "name": "Group name"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/group-subject": {
+      "post": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "groupId": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "groupId"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "groupId": "<groupId>",
+                    "title": "<newSubject>"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/group-description": {
+      "post": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "groupId": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "groupId"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "groupId": "<groupId>",
+                    "description": "some text here"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/group-pic": {
+      "post": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "groupId": {
+                    "type": "string"
+                  },
+                  "path": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "groupId"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "groupId": "<groupId>",
+                    "path": "<url>"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/group-property": {
+      "post": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "groupId": {
+                    "type": "string"
+                  },
+                  "property": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "groupId"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "groupId": "<groupId>",
+                    "property": "membershipApprovalMode / isLidAddressingMode / reportToAdminMode / isAutoApproveMode",
+                    "value": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/messages-admins-only": {
+      "post": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "groupId": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "groupId"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "groupId": "<groupId>",
+                    "value": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/promote-participant-group": {
+      "post": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "groupId": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "groupId",
+                  "phone"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "groupId": "<groupId>",
+                    "phone": "601112345678"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/demote-participant-group": {
+      "post": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "groupId": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "groupId",
+                  "phone"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "groupId": "<groupId>",
+                    "phone": "601112345678"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/add-participant-group": {
+      "post": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "groupId": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "groupId",
+                  "phone"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "groupId": "<groupId>",
+                    "phone": "601112345678"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/remove-participant-group": {
+      "post": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "groupId": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "groupId",
+                  "phone"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "groupId": "<groupId>",
+                    "phone": "601112345678"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/group-info-from-invite-link": {
+      "post": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "invitecode": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "invitecode"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "invitecode": "<groupInviteCode>"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/change-privacy-group": {
+      "post": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "groupId": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "groupId"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "groupId": "<groupId>",
+                    "status": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/join-code": {
+      "post": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "inviteCode": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "inviteCode"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "inviteCode": "5644444"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/leave-group": {
+      "post": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "groupId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "groupId"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/community-participants/{id}": {
+      "get": {
+        "tags": [
+          "Community"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "communityId@g.us"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/create-community": {
+      "post": {
+        "tags": [
+          "Community"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "boolean"
+                  },
+                  "groupIds": {
+                    "type": "array"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "name": "My community name",
+                    "description": "Description for your community",
+                    "groupIds": [
+                      "groupId1",
+                      "groupId2"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/deactivate-community": {
+      "post": {
+        "tags": [
+          "Community"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "id": "<your_community_id@g.us>"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/add-community-subgroup": {
+      "post": {
+        "tags": [
+          "Community"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "groupsIds": {
+                    "type": "array"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "id": "<your_community_id@g.us>",
+                    "groupsIds": [
+                      "group1Id@g.us"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/remove-community-subgroup": {
+      "post": {
+        "tags": [
+          "Community"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "groupsIds": {
+                    "type": "array"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "id": "<your_community_id@g.us>",
+                    "groupsIds": [
+                      "group1Id@g.us"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/promote-community-participant": {
+      "post": {
+        "tags": [
+          "Community"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "participantsId": {
+                    "type": "array"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "id": "<your_community_id@g.us>",
+                    "participantsId": [
+                      "group1Id@g.us"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/demote-community-participant": {
+      "post": {
+        "tags": [
+          "Community"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "participantsId": {
+                    "type": "array"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "id": "<your_community_id@g.us>",
+                    "participantsId": [
+                      "group1Id@g.us"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/newsletter": {
+      "post": {
+        "tags": [
+          "Newsletter"
+        ],
+        "description": "",
+        "operationId": "createNewsletter",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "options": {
+                    "type": "object"
+                  }
+                }
+              },
+              "examples": {
+                "Create newsletter/channel": {
+                  "value": {
+                    "name": "Name for your channel",
+                    "options": {
+                      "description": "Description of channel",
+                      "picture": "<base64_image>"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/newsletter/{id}": {
+      "put": {
+        "tags": [
+          "Newsletter"
+        ],
+        "description": "",
+        "operationId": "editNewsletter",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "<newsletter_id>"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "picture": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Edit newsletter/channel": {
+                  "value": {
+                    "name": "New name of channel",
+                    "description": "New description of channel",
+                    "picture": "<new_base64_image> or send null"
+                  }
+                },
+                "Create newsletter/channel": {
+                  "value": {
+                    "name": "Name for your channel",
+                    "options": {
+                      "description": "Description of channel",
+                      "picture": "<base64_image>"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Newsletter"
+        ],
+        "description": "",
+        "operationId": "destroyNewsletter",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "NEWSLETTER ID"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/mute-newsletter/{id}": {
+      "post": {
+        "tags": [
+          "Newsletter"
+        ],
+        "description": "",
+        "operationId": "muteNewsletter",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "NEWSLETTER ID"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/get-all-labels": {
+      "get": {
+        "tags": [
+          "Labels"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/add-new-label": {
+      "post": {
+        "tags": [
+          "Labels"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "$name": {
+                    "type": "string"
+                  },
+                  "$options": {
+                    "type": "object",
+                    "properties": {
+                      "labelColor": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "name",
+                  "options"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "name": "Name of your label",
+                    "options": {
+                      "labelColor": 4292849392
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/add-or-remove-label": {
+      "post": {
+        "tags": [
+          "Labels"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chatIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "options": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "labelId": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "chatIds"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "chatIds": [
+                      "601112345678"
+                    ],
+                    "options": [
+                      {
+                        "labelId": "76",
+                        "type": "add"
+                      },
+                      {
+                        "labelId": "75",
+                        "type": "remove"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/delete-label/{id}": {
+      "put": {
+        "tags": [
+          "Labels"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "<labelId>"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/delete-all-labels": {
+      "put": {
+        "tags": [
+          "Labels"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/get-business-profiles-products": {
+      "get": {
+        "tags": [
+          "Catalogs"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "601112345678@c.us"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/get-collections": {
+      "get": {
+        "tags": [
+          "Catalogs"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "phone",
+            "schema": {
+              "type": "string",
+              "example": "601112345678"
+            },
+            "in": "query"
+          },
+          {
+            "name": "qnt",
+            "schema": {
+              "type": "string",
+              "example": "10"
+            },
+            "in": "query"
+          },
+          {
+            "name": "max",
+            "schema": {
+              "type": "string",
+              "example": "10"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/get-order-by-messageId/{messageId}": {
+      "get": {
+        "tags": [
+          "Catalogs"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "messageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "true_601112345678@c.us_3EB0E69ACC5B396B21F2FE"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/get-product-by-id": {
+      "get": {
+        "tags": [
+          "Catalogs"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "601112345678"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "10"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/get-products": {
+      "get": {
+        "tags": [
+          "Catalogs"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "601112345678"
+            }
+          },
+          {
+            "name": "qnt",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "10"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/add-product-image": {
+      "post": {
+        "tags": [
+          "Catalogs"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "base64": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "id": "<product_id>",
+                    "base64": "<base64_string>"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/add-product": {
+      "post": {
+        "tags": [
+          "Catalogs"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "image": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "retailerId": {
+                    "type": "string"
+                  },
+                  "currency": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "name": "Product name",
+                    "image": "<base64_string>",
+                    "description": "Description for your product",
+                    "price": "8890",
+                    "url": "http://link_for_your_product.com",
+                    "retailerId": "SKU001",
+                    "currency": "BRL"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/change-product-image": {
+      "post": {
+        "tags": [
+          "Catalogs"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "base64": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "id": "<product_id>",
+                    "base64": "<base64_string>"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/create-collection": {
+      "post": {
+        "tags": [
+          "Catalogs"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "products": {
+                    "type": "array"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "name": "Collection name",
+                    "products": [
+                      "<id_product1>",
+                      "<id_product2>"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/del-collection": {
+      "post": {
+        "tags": [
+          "Catalogs"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "id": "<product_id>"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/del-products": {
+      "post": {
+        "tags": [
+          "Catalogs"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "id": "<product_id>"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/edit-collection": {
+      "post": {
+        "tags": [
+          "Catalogs"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "products": {
+                    "type": "array"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "id": "<product_id>",
+                    "options": {
+                      "name": "New name for collection"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/edit-product": {
+      "post": {
+        "tags": [
+          "Catalogs"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "options": {
+                    "type": "object"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "id": "<product_id>",
+                    "options": {
+                      "name": "New name for product"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/remove-product-image": {
+      "post": {
+        "tags": [
+          "Catalogs"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "index": {
+                    "type": "number"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "id": "<product_id>",
+                    "index": 1
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/set-cart-enabled": {
+      "post": {
+        "tags": [
+          "Catalogs"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "enabled": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/set-product-visibility": {
+      "post": {
+        "tags": [
+          "Catalogs"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "<id_product>"
+                },
+                "value": {
+                  "type": "boolean",
+                  "example": false
+                }
+              },
+              "required": [
+                "id",
+                "value"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "id": "<product_id>",
+                    "value": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/get-battery-level": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/get-media-by-message/{messageId}": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "description": "",
+        "operationId": "getMediaByMessage",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "messageId"
+            }
+          },
+          {
+            "name": "messageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/get-phone-number": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/get-platform-from-message/{messageId}": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          },
+          {
+            "name": "messageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "<messageId>"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/host-device": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/{session}/take-screenshot": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/healthz": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "description": "This endpoint can be used to check the health status of the API. It returns a response with a status code indicating the API",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/metrics": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "description": "This endpoint can be used to check the status of API metrics. It returns a response with the collected metrics.",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/unhealthy": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "description": "This endpoint is used to force the API into an unhealthy state. It can be useful for testing error handling or simulating service disruptions.",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/{session}/chatwoot": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "description": "You can point your Chatwoot to this route so that it can perform functions.",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "event": {
+                    "type": "string"
+                  },
+                  "private": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "messageId": "conversation_status_changed",
+                    "private": "false"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/set-limit": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "description": "Change limits of whatsapp web. Types value: maxMediaSize, maxFileSize, maxShare, statusVideoMaxDuration, unlimitedPin;",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "any"
+                  }
+                },
+                "required": [
+                  "type",
+                  "value"
+                ]
+              },
+              "examples": {
+                "Default": {
+                  "value": {
+                    "type": "maxFileSize",
+                    "value": 104857600
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/{session}/subscribe-presence": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "description": "",
+        "operationId": "subscribePresence",
+        "parameters": [
+          {
+            "name": "session",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60123456789"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "isGroup": {
+                    "type": "boolean"
+                  },
+                  "all": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "example": {
+                "phone": "601112345678",
+                "isGroup": false,
+                "all": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "session": {
+        "type": "string",
+        "schema": "60123456789"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

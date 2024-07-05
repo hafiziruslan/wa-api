@@ -167,7 +167,7 @@ routes.post(
 );
 
 //Chats
-routes.get(
+routes.post(
   '/api/:session/list-chats',
   verifyToken,
   statusConnection,

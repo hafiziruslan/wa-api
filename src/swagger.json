@@ -1100,7 +1100,7 @@
       }
     },
     "/api/{session}/list-chats": {
-      "get": {
+      "post": {
         "tags": ["Chats"],
         "summary": "Retrieve a list of chats",
         "description": "This body is not required. Not sent body to get all chats or filter.",

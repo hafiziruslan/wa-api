@@ -58,7 +58,7 @@ const verifyToken = (req: Request, res: Response, next: NextFunction) => {
       } catch (e) {
         req.logger.error(e);
         return res.status(401).json({
-          error: 'Check that a Session and Token are correct',
+          error: 'Check that the Session and Token are correct',
           message: error,
         });
       }

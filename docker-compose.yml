@@ -6,7 +6,7 @@ services:
       context: .
     volumes:
       - ./src/config.ts:/usr/src/wpp-server/config.ts
-      - ./tokens:/usr/src/wpp-server/tokens
+      - ./wppconnect_tokens:/usr/src/wpp-server/tokens
     ports:
       - "21465:21465"
 

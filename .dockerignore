@@ -1,9 +1,13 @@
 .git
 .github
-.hust
+.husky
+.vscode
+.yarn
+*.bat
+*.bat.bak
+*.lock
 *.tgz
 dist
 log
 node_modules
 npm-debug.log
-tokens

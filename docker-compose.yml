@@ -2,6 +2,7 @@ version: "3"
 
 services:
   wppconnect:
+    container_name: wppconnect-server
     build:
       context: .
     volumes:

@@ -1,5 +1,5 @@
-FROM node:lts-alpine3.18 as base
-WORKDIR /usr/src/wpp-server
+FROM node:lts-alpine as base
+WORKDIR /usr/wpp-server
 ENV NODE_ENV=production PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 COPY package.json ./
 RUN apk update && \
@@ -16,7 +16,7 @@ RUN yarn install --production --pure-lockfile && \
     yarn cache clean
 
 FROM base as build
-WORKDIR /usr/src/wpp-server
+WORKDIR /usr/wpp-server
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 COPY package.json  ./
 RUN yarn install --production=false --pure-lockfile
@@ -25,10 +25,10 @@ COPY . .
 RUN yarn build
 
 FROM base
-WORKDIR /usr/src/wpp-server/
+WORKDIR /usr/wpp-server
 RUN apk add --no-cache chromium
 RUN yarn cache clean
 COPY . .
-COPY --from=build /usr/src/wpp-server/ /usr/src/wpp-server/
+COPY --from=build /usr/wpp-server/ /usr/wpp-server/
 EXPOSE 21465
 ENTRYPOINT ["node", "dist/server.js"]
